@@ -58,7 +58,6 @@ export default function SignupPage() {
       <form onSubmit={handleSubmit}>
         {/* Title */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-text-primary">Create Account</h1>
           <p className="mt-1 text-text-secondary text-sm">
             Start your personalized fitness journey
           </p>

@@ -23,3 +23,14 @@ body {
   color: var(--color-text-primary);
   background-color: var(--color-background);
 }
+
+/* Thin simplebar scrollbar */
+.simplebar-scrollbar::before {
+  background-color: var(--color-border);
+  width: 4px;
+  border-radius: 4px;
+}
+
+.simplebar-track.simplebar-vertical {
+  width: 8px;
+}

@@ -40,16 +40,6 @@ export default function LoginPage() {
   return (
     <AuthLayout activeTab="login">
       <form onSubmit={handleSubmit}>
-        {/* Forgot password link */}
-        <div className="flex justify-end mb-4">
-          <Link
-            href="/forgot-password"
-            className="text-sm font-medium text-primary"
-          >
-            Forgot Password?
-          </Link>
-        </div>
-
         {/* Input fields */}
         <div className="space-y-4">
           <Input
@@ -66,6 +56,16 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="current-password"
           />
+        </div>
+
+        {/* Forgot password link */}
+        <div className="flex justify-end mt-3">
+          <Link
+            href="/forgot-password"
+            className="text-sm font-medium text-primary"
+          >
+            Forgot Password?
+          </Link>
         </div>
 
         {error && (

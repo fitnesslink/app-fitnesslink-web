@@ -8,7 +8,6 @@ import { AuthLayout } from "@/components/layout/AuthLayout";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { SocialLogin } from "@/components/ui/SocialLogin";
-import { BackButton } from "@/components/layout/BackButton";
 
 export default function ForgotPasswordPage() {
   const router = useRouter();
@@ -40,16 +39,11 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <AuthLayout>
-      {/* Back button */}
-      <div className="mb-4">
-        <BackButton onClick={() => router.back()} />
-      </div>
-
+    <AuthLayout showBackButton>
       {isSent ? (
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">Check Your Email</h1>
-          <p className="text-white/70 text-sm mb-8">
+          <h1 className="text-3xl font-bold text-text-primary mb-2">Check Your Email</h1>
+          <p className="text-text-secondary text-sm mb-8">
             We&apos;ve sent a password reset link to {email}
           </p>
           <Button onClick={() => router.push("/login")}>
@@ -67,8 +61,8 @@ export default function ForgotPasswordPage() {
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <h1 className="text-3xl font-bold text-white mb-2">Forgot Password</h1>
-          <p className="text-white/70 text-sm mb-8">
+          <h1 className="text-3xl font-bold text-text-primary mb-2">Forgot Password</h1>
+          <p className="text-text-secondary text-sm mb-8">
             Enter your email to receive a reset link
           </p>
 
@@ -94,7 +88,7 @@ export default function ForgotPasswordPage() {
 
           <SocialLogin />
 
-          <p className="text-center text-sm text-white/70 mt-4">
+          <p className="text-center text-sm text-text-secondary mt-4">
             Remember your password?{" "}
             <Link href="/login" className="text-primary font-medium">
               Login
