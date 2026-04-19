@@ -1,0 +1,129 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { useAuth } from "@/lib/state/auth";
+import { workouts } from "@/lib/api/core";
+import { AppShell } from "@/components/layout/AppShell";
+import { CatalogHeader } from "@/components/catalog/CatalogHeader";
+import { WorkoutCard } from "@/components/catalog/WorkoutCard";
+import { Paginator } from "@/components/catalog/Paginator";
+import { Skeleton } from "@/components/ui/Skeleton";
+import { EmptyState } from "@/components/ui/EmptyState";
+import type { WorkoutSummary } from "@/lib/catalog/types";
+import { PLACEHOLDER_WORKOUTS } from "@/lib/catalog/placeholder";
+
+const PAGE_SIZE = 12;
+
+const SORT_OPTIONS = [
+  { value: "name-asc", label: "Name (A–Z)" },
+  { value: "name-desc", label: "Name (Z–A)" },
+  { value: "duration-asc", label: "Shortest first" },
+  { value: "duration-desc", label: "Longest first" },
+];
+
+async function fetchWorkouts(): Promise<WorkoutSummary[]> {
+  try {
+    const res = (await workouts.listWorkouts()) as { items?: WorkoutSummary[] } | WorkoutSummary[];
+    const items = Array.isArray(res) ? res : res.items ?? [];
+    return items.length > 0 ? items : PLACEHOLDER_WORKOUTS;
+  } catch {
+    return PLACEHOLDER_WORKOUTS;
+  }
+}
+
+export default function WorkoutsListPage() {
+  const router = useRouter();
+  const { user, isLoading: authLoading } = useAuth();
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState(SORT_OPTIONS[0].value);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    if (!authLoading && !user) router.replace("/login");
+  }, [authLoading, user, router]);
+
+  const { data, isLoading } = useQuery({
+    queryKey: workouts.keys.list(),
+    queryFn: fetchWorkouts,
+  });
+
+  const visible = useMemo(() => {
+    let items = data ?? [];
+    if (search) {
+      const q = search.toLowerCase();
+      items = items.filter(
+        (w) =>
+          w.name.toLowerCase().includes(q) || (w.description?.toLowerCase().includes(q) ?? false)
+      );
+    }
+    const copy = [...items];
+    copy.sort((a, b) => {
+      switch (sort) {
+        case "name-asc":
+          return a.name.localeCompare(b.name);
+        case "name-desc":
+          return b.name.localeCompare(a.name);
+        case "duration-asc":
+          return a.estimatedMinutes - b.estimatedMinutes;
+        case "duration-desc":
+          return b.estimatedMinutes - a.estimatedMinutes;
+      }
+      return 0;
+    });
+    return copy;
+  }, [data, search, sort]);
+
+  const paged = visible.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+  useEffect(() => {
+    // Reset to first page whenever filters change
+    setPage(1);
+  }, [search, sort]);
+
+  if (authLoading || !user) return null;
+
+  return (
+    <AppShell subtitle="Single-session workouts">
+      <div className="max-w-6xl mx-auto px-4 lg:px-0 py-6 space-y-6">
+        <CatalogHeader
+          title="Workouts"
+          subtitle={`${visible.length} result${visible.length === 1 ? "" : "s"}`}
+          search={search}
+          onSearchChange={setSearch}
+          sort={sort}
+          sortOptions={SORT_OPTIONS}
+          onSortChange={setSort}
+        />
+
+        {isLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <Skeleton key={i} className="h-64" />
+            ))}
+          </div>
+        ) : paged.length === 0 ? (
+          <EmptyState
+            title="No workouts match your search"
+            description="Try different keywords or clear the filter."
+          />
+        ) : (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {paged.map((w) => (
+                <WorkoutCard key={w.id} workout={w} />
+              ))}
+            </div>
+            <Paginator
+              page={page}
+              pageSize={PAGE_SIZE}
+              total={visible.length}
+              onPageChange={setPage}
+            />
+          </>
+        )}
+      </div>
+    </AppShell>
+  );
+}

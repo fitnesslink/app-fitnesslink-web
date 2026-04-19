@@ -52,7 +52,7 @@ export default function OnboardingPage() {
         }));
         await api.submitOnboardingAnswers(answerPayload);
         setOnboarded();
-        router.push("/dashboard");
+        router.push("/home");
       } catch {
         // Allow retry
       } finally {

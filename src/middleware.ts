@@ -10,7 +10,7 @@ const PUBLIC_PATHS = new Set<string>([
   "/forgot-password",
 ]);
 
-// When a valid session exists, these routes should bounce to /dashboard.
+// When a valid session exists, these routes should bounce to /home.
 const AUTH_ONLY_PATHS = new Set<string>(["/login", "/signup"]);
 
 // Base64-url decode with manual padding — atob is Edge-safe.
@@ -49,7 +49,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (isAuthenticated && AUTH_ONLY_PATHS.has(pathname)) {
-    return NextResponse.redirect(new URL("/dashboard", req.url));
+    return NextResponse.redirect(new URL("/home", req.url));
   }
 
   if (!isAuthenticated && !PUBLIC_PATHS.has(pathname)) {
