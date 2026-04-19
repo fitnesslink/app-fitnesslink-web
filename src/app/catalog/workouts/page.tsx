@@ -10,7 +10,9 @@ import { CatalogHeader } from "@/components/catalog/CatalogHeader";
 import { WorkoutCard } from "@/components/catalog/WorkoutCard";
 import { Paginator } from "@/components/catalog/Paginator";
 import { Skeleton } from "@/components/ui/Skeleton";
-import { EmptyState } from "@/components/ui/EmptyState";
+import { WorkoutsEmpty } from "@/components/ui/empty-states";
+import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 import type { WorkoutSummary } from "@/lib/catalog/types";
 import { PLACEHOLDER_WORKOUTS } from "@/lib/catalog/placeholder";
 
@@ -104,9 +106,14 @@ export default function WorkoutsListPage() {
             ))}
           </div>
         ) : paged.length === 0 ? (
-          <EmptyState
-            title="No workouts match your search"
-            description="Try different keywords or clear the filter."
+          <WorkoutsEmpty
+            action={
+              <Link href="/catalog/workouts/new">
+                <Button variant="primary" fullWidth={false} className="!h-11 px-5 text-sm">
+                  Create workout
+                </Button>
+              </Link>
+            }
           />
         ) : (
           <>

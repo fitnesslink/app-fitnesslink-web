@@ -10,7 +10,9 @@ import { CatalogHeader } from "@/components/catalog/CatalogHeader";
 import { ProgramCard } from "@/components/catalog/ProgramCard";
 import { Paginator } from "@/components/catalog/Paginator";
 import { Skeleton } from "@/components/ui/Skeleton";
-import { EmptyState } from "@/components/ui/EmptyState";
+import { ProgramsEmpty } from "@/components/ui/empty-states";
+import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 import type { ProgramSummary } from "@/lib/catalog/types";
 import { PLACEHOLDER_PROGRAMS } from "@/lib/catalog/placeholder";
 
@@ -100,7 +102,15 @@ export default function ProgramsListPage() {
             ))}
           </div>
         ) : paged.length === 0 ? (
-          <EmptyState title="No programs match your search" />
+          <ProgramsEmpty
+            action={
+              <Link href="/catalog/programs/new">
+                <Button variant="primary" fullWidth={false} className="!h-11 px-5 text-sm">
+                  Create program
+                </Button>
+              </Link>
+            }
+          />
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">

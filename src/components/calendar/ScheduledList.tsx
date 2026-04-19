@@ -7,7 +7,7 @@ import { calendar } from "@/lib/api/core";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Popover } from "@/components/ui/Popover";
-import { EmptyState } from "@/components/ui/EmptyState";
+import { ScheduleEmpty } from "@/components/ui/empty-states";
 import type { ScheduledWorkout } from "@/lib/calendar/types";
 
 interface ScheduledListProps {
@@ -57,9 +57,18 @@ export function ScheduledList({ date, entries, onEdit, onAdd }: ScheduledListPro
 
       {sorted.length === 0 ? (
         <Card>
-          <EmptyState
-            title="Nothing scheduled"
-            description="Tap + Add to plan a workout for this day."
+          <ScheduleEmpty
+            action={
+              <Button
+                type="button"
+                variant="primary"
+                fullWidth={false}
+                className="!h-11 px-5 text-sm"
+                onClick={onAdd}
+              >
+                Add workout
+              </Button>
+            }
           />
         </Card>
       ) : (

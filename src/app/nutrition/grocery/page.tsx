@@ -43,7 +43,7 @@ export default function GroceryListPage() {
   const [localChecked, setLocalChecked] = useState<Record<string, boolean>>({});
 
   const toggle = useMutation({
-    mutationFn: (id: string) => grocery.toggleGrocery(id, {} as never),
+    mutationFn: (id: string) => grocery.toggleGrocery(id),
     onSuccess: () => qc.invalidateQueries({ queryKey: grocery.keys.all }),
   });
 
@@ -53,7 +53,7 @@ export default function GroceryListPage() {
   });
 
   const regenerate = useMutation({
-    mutationFn: () => grocery.generateGrocery({} as never),
+    mutationFn: () => grocery.generateGrocery(),
     onSuccess: () => qc.invalidateQueries({ queryKey: grocery.keys.all }),
   });
 
