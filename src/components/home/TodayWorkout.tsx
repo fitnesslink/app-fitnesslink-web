@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { useAtomValue } from "jotai";
 import { calendar } from "@/lib/api/core";
@@ -62,9 +63,11 @@ export function TodayWorkout() {
           title="Nothing scheduled"
           description="Browse the catalog to pick a workout for this day."
           action={
-            <Button variant="primary" fullWidth={false} className="!h-11 px-5 text-sm">
-              Browse catalog
-            </Button>
+            <Link href="/catalog/workouts">
+              <Button variant="primary" fullWidth={false} className="!h-11 px-5 text-sm">
+                Browse catalog
+              </Button>
+            </Link>
           }
         />
       </Card>
@@ -84,9 +87,11 @@ export function TodayWorkout() {
           <span>{data.exerciseCount} exercises</span>
         </div>
         <div className="mt-4">
-          <Button variant="primary" fullWidth={false} className="!h-11 px-6 text-sm">
-            Start
-          </Button>
+          <Link href={`/session/${data.workoutId}`}>
+            <Button variant="primary" fullWidth={false} className="!h-11 px-6 text-sm">
+              Start
+            </Button>
+          </Link>
         </div>
       </CardContent>
     </Card>

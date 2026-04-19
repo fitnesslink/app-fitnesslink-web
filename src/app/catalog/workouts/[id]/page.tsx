@@ -7,10 +7,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "@/lib/state/auth";
 import { workouts } from "@/lib/api/core";
 import { AppShell } from "@/components/layout/AppShell";
-import { Card, CardContent } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { WorkoutDetailView } from "@/components/catalog/WorkoutDetailView";
 import { MovementPreviewSheet } from "@/components/catalog/MovementPreviewSheet";
 import type { WorkoutDetail } from "@/lib/catalog/types";
 import { placeholderWorkoutDetail } from "@/lib/catalog/placeholder";
@@ -66,82 +65,29 @@ export default function WorkoutDetailPage({ params }: { params: Promise<{ id: st
             <Skeleton className="h-64" />
           </>
         ) : (
-          <>
-            <Card>
-              <CardContent>
-                <div className="flex flex-col lg:flex-row gap-6">
-                  <div className="aspect-[4/3] lg:w-64 shrink-0 rounded-xl bg-primary-soft text-primary flex items-center justify-center">
-                    <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M4 10h16M8 6v12M16 6v12" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h1 className="text-2xl lg:text-3xl font-bold text-text-primary">{data.name}</h1>
-                    {data.description && (
-                      <p className="text-sm text-text-secondary mt-2">{data.description}</p>
-                    )}
-                    <div className="flex flex-wrap gap-2 mt-3 text-xs text-text-secondary">
-                      <Badge tone="default">{data.estimatedMinutes} min</Badge>
-                      <Badge tone="default">
-                        {data.phases.reduce((s, p) => s + p.exercises.length, 0)} exercises
-                      </Badge>
-                      {data.trainingLevel && (
-                        <Badge tone={data.trainingLevel === "advanced" ? "warning" : "primary"}>
-                          {data.trainingLevel}
-                        </Badge>
-                      )}
-                    </div>
-                    <div className="mt-5 flex flex-wrap gap-3">
-                      <Button variant="primary" fullWidth={false} className="!h-11 px-6 text-sm">
-                        Start session
-                      </Button>
-                      <Button variant="secondary" fullWidth={false} className="!h-11 px-6 text-sm">
-                        Schedule
-                      </Button>
-                      <Button variant="secondary" fullWidth={false} className="!h-11 px-6 text-sm">
-                        Edit
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {data.phases.map((phase) => (
-              <Card key={phase.id}>
-                <CardContent>
-                  <h2 className="text-lg font-semibold text-text-primary mb-3">{phase.name}</h2>
-                  <ul className="divide-y divide-border-soft">
-                    {phase.exercises.map((ex) => (
-                      <li key={ex.id}>
-                        <button
-                          type="button"
-                          onClick={() => setPreviewMovementId(ex.movementId)}
-                          className="w-full text-left flex items-center gap-4 py-3 hover:bg-primary-soft/40 -mx-3 px-3 rounded-lg transition-colors"
-                        >
-                          <div className="w-12 h-12 rounded-lg bg-primary-soft text-primary flex items-center justify-center shrink-0">
-                            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <polygon points="5 3 19 12 5 21 5 3" />
-                            </svg>
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <p className="text-sm font-medium text-text-primary">{ex.name}</p>
-                            <p className="text-xs text-text-secondary mt-0.5">
-                              {ex.sets} × {ex.reps ? `${ex.reps} reps` : `${ex.durationSeconds}s`}
-                              {ex.restSeconds ? ` · ${ex.restSeconds}s rest` : ""}
-                            </p>
-                          </div>
-                          <svg className="w-5 h-5 text-text-secondary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="9 18 15 12 9 6" />
-                          </svg>
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </>
+          <WorkoutDetailView
+            workout={data}
+            onExerciseClick={setPreviewMovementId}
+            actions={
+              <>
+                <Link href={`/session/${id}`}>
+                  <Button variant="primary" fullWidth={false} className="!h-11 px-6 text-sm">
+                    Start session
+                  </Button>
+                </Link>
+                <Link href={`/session/${id}?mode=playlist`}>
+                  <Button variant="secondary" fullWidth={false} className="!h-11 px-6 text-sm">
+                    Play video mode
+                  </Button>
+                </Link>
+                <Link href={`/catalog/workouts/${id}/edit`}>
+                  <Button variant="secondary" fullWidth={false} className="!h-11 px-6 text-sm">
+                    Edit
+                  </Button>
+                </Link>
+              </>
+            }
+          />
         )}
       </div>
 
