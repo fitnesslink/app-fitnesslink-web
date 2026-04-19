@@ -1,6 +1,35 @@
 "use client";
 
-export function SocialLogin() {
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { signInWithGoogle, signInWithApple } from "@/lib/firebase/auth";
+
+interface SocialLoginProps {
+  redirectTo?: string;
+}
+
+export function SocialLogin({ redirectTo = "/onboarding" }: SocialLoginProps) {
+  const router = useRouter();
+  const [error, setError] = useState("");
+  const [pending, setPending] = useState<"google" | "apple" | null>(null);
+
+  async function handleProvider(provider: "google" | "apple") {
+    setError("");
+    setPending(provider);
+    try {
+      if (provider === "google") {
+        await signInWithGoogle();
+      } else {
+        await signInWithApple();
+      }
+      router.push(redirectTo);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Sign-in failed");
+    } finally {
+      setPending(null);
+    }
+  }
+
   return (
     <div className="w-full mt-6">
       {/* Or divider — green lines on mobile, gray on desktop */}
@@ -16,7 +45,9 @@ export function SocialLogin() {
         <button
           type="button"
           aria-label="Sign in with Google"
-          className="w-14 h-14 rounded-full bg-white flex items-center justify-center hover:bg-gray-100 transition-colors shadow-sm"
+          disabled={pending !== null}
+          onClick={() => handleProvider("google")}
+          className="w-14 h-14 rounded-full bg-white flex items-center justify-center hover:bg-gray-100 transition-colors shadow-sm disabled:opacity-60"
         >
           <svg width="24" height="24" viewBox="0 0 24 24">
             <path
@@ -38,20 +69,25 @@ export function SocialLogin() {
           </svg>
         </button>
 
-        {/* Facebook */}
+        {/* Apple */}
         <button
           type="button"
-          aria-label="Sign in with Facebook"
-          className="w-14 h-14 rounded-full bg-white flex items-center justify-center hover:bg-gray-100 transition-colors shadow-sm"
+          aria-label="Sign in with Apple"
+          disabled={pending !== null}
+          onClick={() => handleProvider("apple")}
+          className="w-14 h-14 rounded-full bg-black flex items-center justify-center hover:bg-gray-900 transition-colors shadow-sm disabled:opacity-60"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24">
-            <path
-              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-              fill="#1877F2"
-            />
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+            <path d="M17.05 12.04c-.03-3.05 2.49-4.52 2.6-4.59-1.42-2.07-3.62-2.36-4.4-2.39-1.87-.19-3.65 1.1-4.6 1.1-.95 0-2.42-1.07-3.98-1.04-2.05.03-3.94 1.19-4.99 3.02-2.13 3.7-.55 9.15 1.53 12.15 1.01 1.47 2.22 3.12 3.81 3.06 1.53-.06 2.11-.99 3.97-.99 1.85 0 2.38.99 4.01.96 1.66-.03 2.7-1.49 3.71-2.97 1.17-1.7 1.65-3.35 1.68-3.44-.04-.02-3.22-1.24-3.25-4.92zM14.05 3.39c.83-1.01 1.39-2.41 1.23-3.81-1.2.05-2.65.8-3.51 1.8-.77.89-1.45 2.32-1.27 3.68 1.34.1 2.71-.68 3.55-1.67z" />
           </svg>
         </button>
       </div>
+
+      {error && (
+        <p className="mt-4 text-sm text-error text-center bg-error/10 rounded-full px-4 py-2">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

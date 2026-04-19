@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { api } from "@/lib/api";
+import { sendPasswordReset } from "@/lib/firebase/auth";
 import { AuthLayout } from "@/components/layout/AuthLayout";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -29,7 +29,7 @@ export default function ForgotPasswordPage() {
 
     setIsLoading(true);
     try {
-      await api.forgotPassword(email);
+      await sendPasswordReset(email);
       setIsSent(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");

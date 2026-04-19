@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useAuth } from "@/lib/state/auth";
-import { api } from "@/lib/api";
+import { signUpWithEmail } from "@/lib/firebase/auth";
 import { AuthLayout } from "@/components/layout/AuthLayout";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -12,7 +11,6 @@ import { SocialLogin } from "@/components/ui/SocialLogin";
 
 export default function SignupPage() {
   const router = useRouter();
-  const { login } = useAuth();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -43,8 +41,7 @@ export default function SignupPage() {
 
     setIsLoading(true);
     try {
-      const res = await api.signup(firstName, lastName, email, password);
-      login(res.user, res.token);
+      await signUpWithEmail(firstName, lastName, email, password);
       router.push("/plans");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Signup failed");
@@ -114,7 +111,7 @@ export default function SignupPage() {
         </div>
 
         {/* Social login */}
-        <SocialLogin />
+        <SocialLogin redirectTo="/plans" />
 
         {/* Login link */}
         <p className="text-center text-sm text-text-secondary mt-4">

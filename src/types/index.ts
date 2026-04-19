@@ -5,11 +5,6 @@ export interface User {
   email: string;
 }
 
-export interface AuthResponse {
-  user: User;
-  token: string;
-}
-
 export interface Plan {
   id: "monthly" | "annual";
   name: string;

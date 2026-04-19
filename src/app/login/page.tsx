@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useAuth } from "@/lib/state/auth";
-import { api } from "@/lib/api";
+import { signInWithEmail } from "@/lib/firebase/auth";
 import { AuthLayout } from "@/components/layout/AuthLayout";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -12,7 +11,6 @@ import { SocialLogin } from "@/components/ui/SocialLogin";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -27,8 +25,7 @@ export default function LoginPage() {
 
     setIsLoading(true);
     try {
-      const res = await api.login(email, password);
-      login(res.user, res.token);
+      await signInWithEmail(email, password);
       router.push("/onboarding");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");

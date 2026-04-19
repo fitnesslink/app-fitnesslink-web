@@ -1,5 +1,4 @@
 import type {
-  AuthResponse,
   PlansResponse,
   QuestionsResponse,
   Subscription,
@@ -26,28 +25,9 @@ async function request<T>(
   return res.json();
 }
 
+// Mock routes still used by the plans / payment / onboarding scaffolding.
+// Auth (login / signup / forgot-password) is owned by Firebase — see src/lib/firebase/auth.ts.
 export const api = {
-  login(email: string, password: string) {
-    return request<AuthResponse>("/auth/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-    });
-  },
-
-  signup(firstName: string, lastName: string, email: string, password: string) {
-    return request<AuthResponse>("/auth/signup", {
-      method: "POST",
-      body: JSON.stringify({ firstName, lastName, email, password }),
-    });
-  },
-
-  forgotPassword(email: string) {
-    return request<{ message: string }>("/auth/forgot-password", {
-      method: "POST",
-      body: JSON.stringify({ email }),
-    });
-  },
-
   getPlans() {
     return request<PlansResponse>("/plans");
   },

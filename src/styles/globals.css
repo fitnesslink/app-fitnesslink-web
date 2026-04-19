@@ -1,16 +1,45 @@
 @import "tailwindcss";
 
 @theme {
+  /* Brand */
   --color-primary: #23AF8D;
-  --color-primary-dark: #1D9478;
+  --color-primary-hover: #1D9478;
+  --color-primary-dark: #1D9478; /* legacy alias — prefer primary-hover */
+  --color-primary-soft: #E6F6F1;
+
+  /* Surfaces */
   --color-background: #F0F4F5;
   --color-surface: #FFFFFF;
+
+  /* Text */
   --color-text-primary: #1D1B20;
   --color-text-secondary: #6B7280;
-  --color-border: #8E918F;
-  --color-error: #DC2626;
+  --color-text-link: #23AF8D;
 
+  /* Borders */
+  --color-border: #8E918F;      /* existing — heavier mobile borders */
+  --color-border-soft: #E5E7EB; /* spec — desktop dividers, table rows */
+
+  /* Status / semantic */
+  --color-error: #DC2626;
+  --color-danger: #DC2626;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-info: #3B82F6;
+  --color-status-draft: #2F2F2F;
+
+  /* Accents — used for chart series, feature sections, macro colors */
+  --color-accent-orange: #F69833;
+  --color-accent-purple: #8B5CF6;
+  --color-accent-blue: #3B82F6;
+
+  /* Typography */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Elevation — keep in sync with any shadow primitives */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 12px 20px -4px rgb(0 0 0 / 0.12), 0 4px 8px -2px rgb(0 0 0 / 0.06);
 }
 
 html,
