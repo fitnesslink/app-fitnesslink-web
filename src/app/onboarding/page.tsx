@@ -3,31 +3,61 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/state/auth";
-import { api } from "@/lib/api";
+import { personalization } from "@/lib/api/core";
+import { platformJson } from "@/lib/api/client";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { BackButton } from "@/components/layout/BackButton";
 import type { Question, Answer } from "@/types";
 
+interface RawPersonalization {
+  id?: string;
+  name?: string | null;
+  singleSelection?: boolean;
+  order?: number | null;
+  options?: Array<{ id?: string; text?: string | null; order?: number | null }> | null;
+}
+
+function mapQuestions(raw: RawPersonalization[]): Question[] {
+  return raw
+    .slice()
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+    .map((p) => ({
+      id: p.id ?? "",
+      question: p.name ?? "",
+      singleSelection: p.singleSelection ?? true,
+      options: (p.options ?? [])
+        .slice()
+        .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+        .map((o) => ({ id: o.id ?? "", label: o.text ?? "" })),
+    }));
+}
+
 export default function OnboardingPage() {
   const router = useRouter();
   const { user, isLoading: authLoading, setOnboarded } = useAuth();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [answers, setAnswers] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authLoading && !user) {
       router.replace("/login");
       return;
     }
-    api.getOnboardingQuestions().then((res) => {
-      setQuestions(res.questions);
-      setIsLoading(false);
-    });
+    if (!user) return;
+    personalization
+      .listPersonalization()
+      .then((res) => {
+        const raw = Array.isArray(res) ? (res as RawPersonalization[]) : [];
+        setQuestions(mapQuestions(raw));
+      })
+      .catch(() => setError("Couldn't load questions."))
+      .finally(() => setIsLoading(false));
   }, [authLoading, user, router]);
 
   const question = questions[currentStep];
@@ -45,16 +75,22 @@ export default function OnboardingPage() {
 
     if (isLastStep) {
       setIsSubmitting(true);
+      setError(null);
       try {
-        const answerPayload: Answer[] = questions.map((q) => ({
-          questionId: q.id,
-          selectedOptionId: answers[q.id],
-        }));
-        await api.submitOnboardingAnswers(answerPayload);
+        const answerPayload: Answer[] = questions
+          .filter((q) => answers[q.id])
+          .map((q) => ({
+            personalizationId: q.id,
+            personalizationOptionId: answers[q.id],
+          }));
+        await platformJson(`/core/api/v1/personalization/me`, {
+          method: "POST",
+          body: JSON.stringify(answerPayload),
+        });
         setOnboarded();
         router.push("/home");
-      } catch {
-        // Allow retry
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Couldn't save answers.");
       } finally {
         setIsSubmitting(false);
       }
@@ -75,6 +111,26 @@ export default function OnboardingPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full" />
+      </div>
+    );
+  }
+
+  if (questions.length === 0) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background px-6">
+        <div className="text-center space-y-4 max-w-sm">
+          <p className="text-sm text-text-secondary">
+            No personalization questions yet. You can set your preferences later from Profile.
+          </p>
+          <Button
+            onClick={() => {
+              setOnboarded();
+              router.push("/home");
+            }}
+          >
+            Continue
+          </Button>
+        </div>
       </div>
     );
   }
@@ -117,7 +173,10 @@ export default function OnboardingPage() {
             </div>
 
             {/* Continue button */}
-            <div className="py-8">
+            <div className="py-8 space-y-3">
+              {error && (
+                <p className="text-sm text-danger bg-danger/10 rounded-lg px-3 py-2">{error}</p>
+              )}
               <Button
                 onClick={handleContinue}
                 disabled={!selectedOption}

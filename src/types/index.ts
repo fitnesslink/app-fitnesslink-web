@@ -39,17 +39,13 @@ export interface QuestionOption {
 }
 
 export interface Question {
-  id: number;
+  id: string;
   question: string;
-  type: "single-select";
+  singleSelection: boolean;
   options: QuestionOption[];
 }
 
-export interface QuestionsResponse {
-  questions: Question[];
-}
-
 export interface Answer {
-  questionId: number;
-  selectedOptionId: string;
+  personalizationId: string;
+  personalizationOptionId: string;
 }

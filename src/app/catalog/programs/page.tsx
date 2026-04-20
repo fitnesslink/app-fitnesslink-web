@@ -93,6 +93,13 @@ export default function ProgramsListPage() {
           sort={sort}
           sortOptions={SORT_OPTIONS}
           onSortChange={setSort}
+          actions={
+            <Link href="/catalog/programs/new">
+              <Button variant="primary" fullWidth={false} className="!h-11 px-5 text-sm">
+                New program
+              </Button>
+            </Link>
+          }
         />
 
         {isLoading ? (

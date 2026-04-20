@@ -1,10 +1,4 @@
-import type {
-  PlansResponse,
-  QuestionsResponse,
-  Subscription,
-  PaymentMethod,
-  Answer,
-} from "@/types";
+import type { PlansResponse, Subscription, PaymentMethod } from "@/types";
 
 const BASE_URL = "/api";
 
@@ -25,8 +19,8 @@ async function request<T>(
   return res.json();
 }
 
-// Mock routes still used by the plans / payment / onboarding scaffolding.
-// Auth (login / signup / forgot-password) is owned by Firebase — see src/lib/firebase/auth.ts.
+// Local stubs for scaffolding not yet wired to the platform (plans, payment).
+// Auth lives in Firebase; onboarding lives in the platform Personalization module.
 export const api = {
   getPlans() {
     return request<PlansResponse>("/plans");
@@ -37,19 +31,5 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ planId, paymentMethod }),
     });
-  },
-
-  getOnboardingQuestions() {
-    return request<QuestionsResponse>("/onboarding/questions");
-  },
-
-  submitOnboardingAnswers(answers: Answer[]) {
-    return request<{ message: string; profileComplete: boolean }>(
-      "/onboarding/answers",
-      {
-        method: "POST",
-        body: JSON.stringify({ answers }),
-      }
-    );
   },
 };

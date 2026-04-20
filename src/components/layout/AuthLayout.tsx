@@ -93,7 +93,7 @@ export function AuthLayout({ children, activeTab, showBackButton }: AuthLayoutPr
           )}
           <div className="flex-1 min-h-0">
             <SimpleBar style={{ maxHeight: "100%" }} className="pb-8">
-              <div className="w-full max-w-[364px] mx-auto">{children}</div>
+              <div className="w-full max-w-[364px] mx-auto p-1">{children}</div>
             </SimpleBar>
           </div>
         </div>
@@ -141,7 +141,7 @@ export function AuthLayout({ children, activeTab, showBackButton }: AuthLayoutPr
               {/* Form content — scrollable */}
               <div className="flex-1 min-h-0">
                 <SimpleBar style={{ maxHeight: "100%" }}>
-                  {children}
+                  <div className="p-1">{children}</div>
                 </SimpleBar>
               </div>
             </div>

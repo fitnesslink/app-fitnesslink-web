@@ -97,6 +97,13 @@ export default function WorkoutsListPage() {
           sort={sort}
           sortOptions={SORT_OPTIONS}
           onSortChange={setSort}
+          actions={
+            <Link href="/catalog/workouts/new">
+              <Button variant="primary" fullWidth={false} className="!h-11 px-5 text-sm">
+                New workout
+              </Button>
+            </Link>
+          }
         />
 
         {isLoading ? (
