@@ -14,7 +14,6 @@ import { ProgramsEmpty } from "@/components/ui/empty-states";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import type { ProgramSummary } from "@/lib/catalog/types";
-import { PLACEHOLDER_PROGRAMS } from "@/lib/catalog/placeholder";
 
 const PAGE_SIZE = 12;
 
@@ -26,11 +25,12 @@ const SORT_OPTIONS = [
 
 async function fetchPrograms(): Promise<ProgramSummary[]> {
   try {
-    const res = (await programs.listPrograms()) as { items?: ProgramSummary[] } | ProgramSummary[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : PLACEHOLDER_PROGRAMS;
+    const res = (await programs.listPrograms()) as
+      | { data?: ProgramSummary[]; items?: ProgramSummary[] }
+      | ProgramSummary[];
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return PLACEHOLDER_PROGRAMS;
+    return [];
   }
 }
 

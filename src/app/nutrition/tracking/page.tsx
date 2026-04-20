@@ -17,22 +17,49 @@ import {
   DEFAULT_GOAL,
   MEAL_LABELS,
   MEAL_TYPES,
-  placeholderEntriesForToday,
   sumMacros,
   type FoodEntry,
   type MealType,
   type NutritionGoal,
 } from "@/lib/nutrition/types";
 
+interface RawFoodEntry {
+  id?: string;
+  name?: string | null;
+  mealType?: string | null;
+  servingSize?: number | null;
+  servingUnit?: string | null;
+  calories?: number;
+  protein?: number;
+  carbs?: number;
+  fat?: number;
+  loggedAt?: string;
+}
+
 async function fetchEntries(): Promise<FoodEntry[]> {
   try {
     const res = (await foodEntries.getMyFoodEntry()) as
-      | { items?: FoodEntry[] }
-      | FoodEntry[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : placeholderEntriesForToday();
+      | { data?: RawFoodEntry[]; items?: RawFoodEntry[] }
+      | RawFoodEntry[];
+    const raw = Array.isArray(res) ? res : res.data ?? res.items ?? [];
+    return raw.map((r) => ({
+      id: r.id ?? "",
+      foodId: r.id ?? "",
+      foodName: r.name ?? "",
+      mealType: (["breakfast", "lunch", "dinner", "snack"].includes(r.mealType ?? "")
+        ? r.mealType
+        : "snack") as MealType,
+      servings: 1,
+      servingSize: r.servingSize ?? 0,
+      servingUnit: r.servingUnit ?? "",
+      calories: r.calories ?? 0,
+      protein: r.protein ?? 0,
+      carbs: r.carbs ?? 0,
+      fat: r.fat ?? 0,
+      loggedAt: r.loggedAt ?? new Date().toISOString(),
+    }));
   } catch {
-    return placeholderEntriesForToday();
+    return [];
   }
 }
 

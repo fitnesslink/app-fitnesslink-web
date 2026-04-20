@@ -9,6 +9,7 @@ type Schemas = components["schemas"];
 export type CreateProgramRequest = Schemas["FitnessLink.Module.Core.Application.Features.Programs.DTOs.CreateProgramRequest"];
 export type UpdateProgramRequest = Schemas["FitnessLink.Module.Core.Application.Features.Programs.DTOs.UpdateProgramRequest"];
 export type AddWeeklyWorkoutRequest = Schemas["FitnessLink.Module.Core.Application.Features.Programs.DTOs.AddWeeklyWorkoutRequest"];
+export type PublishContentRequest = Schemas["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
 
 export const keys = {
   all: ["core", "programs"] as const,
@@ -18,7 +19,7 @@ export const keys = {
   detail: (id: string) => [...keys.details(), id] as const,
 } as const;
 
-export async function listPrograms(params?: { "page"?: number; "pageSize"?: number }): Promise<unknown> {
+export async function listPrograms(params?: { "page"?: number; "pageSize"?: number; "source"?: string; "contributorId"?: string }): Promise<unknown> {
   const qs = buildQuery(params);
   const url = qs ? `/core/api/v1/programs?${qs}` : `/core/api/v1/programs`;
   return platformJson(url);
@@ -42,6 +43,14 @@ export async function updateProgram(id: string, body: UpdateProgramRequest): Pro
 
 export async function weeklyWorkoutsProgram(id: string, body: AddWeeklyWorkoutRequest): Promise<unknown> {
   return platformJson(`/core/api/v1/programs/${encodeURIComponent(id)}/weekly-workouts`, { method: "POST", body: JSON.stringify(body) });
+}
+
+export async function publishProgram(id: string, body: PublishContentRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/programs/${encodeURIComponent(id)}/publish`, { method: "POST", body: JSON.stringify(body) });
+}
+
+export async function unpublishProgram(id: string, body: PublishContentRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/programs/${encodeURIComponent(id)}/unpublish`, { method: "POST", body: JSON.stringify(body) });
 }
 
 function buildQuery(params: Record<string, unknown> | undefined): string {

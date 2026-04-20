@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Avatar } from "@/components/ui/Avatar";
 import { DatePicker } from "@/components/ui/DatePicker";
-import { placeholderProfile, type TrainingLevel } from "@/lib/profile/types";
+import type { TrainingLevel } from "@/lib/profile/types";
 
 const LEVELS: TrainingLevel[] = ["beginner", "intermediate", "advanced"];
 
@@ -36,14 +36,8 @@ export default function PersonalInfoPage() {
   }, [authLoading, user, router]);
 
   useEffect(() => {
-    const p = placeholderProfile();
-    setFirstName(user?.firstName || p.firstName);
-    setLastName(user?.lastName || p.lastName);
-    setBio(p.bio ?? "");
-    setBirthDate(p.birthDate ?? "");
-    setHeightCm(p.heightCm ? String(p.heightCm) : "");
-    setWeightKg(p.baselineWeightKg ? String(p.baselineWeightKg) : "");
-    setLevel(p.trainingLevel ?? "beginner");
+    setFirstName(user?.firstName ?? "");
+    setLastName(user?.lastName ?? "");
   }, [user]);
 
   const save = useMutation({

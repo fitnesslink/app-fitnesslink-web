@@ -8,7 +8,6 @@ import { Sheet } from "@/components/ui/Sheet";
 import { Tabs, TabList, Tab, TabPanel } from "@/components/ui/Tabs";
 import { NotificationsEmpty } from "@/components/ui/empty-states";
 import {
-  placeholderNotifications,
   type AppNotification,
   type NotificationCategory,
 } from "@/lib/profile/types";
@@ -21,12 +20,11 @@ interface NotificationsSheetProps {
 async function fetchNotifications(): Promise<AppNotification[]> {
   try {
     const res = (await notifApi.getMyNotification()) as
-      | { items?: AppNotification[] }
+      | { data?: AppNotification[]; items?: AppNotification[] }
       | AppNotification[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : placeholderNotifications();
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return placeholderNotifications();
+    return [];
   }
 }
 

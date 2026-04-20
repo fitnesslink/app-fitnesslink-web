@@ -11,19 +11,14 @@ import { Button } from "@/components/ui/Button";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { ProgramDetailView } from "@/components/catalog/ProgramDetailView";
 import type { ProgramDetail } from "@/lib/catalog/types";
-import { placeholderProgramDetail } from "@/lib/catalog/placeholder";
 
-async function fetchProgramDetail(id: string): Promise<ProgramDetail> {
+async function fetchProgramDetail(id: string): Promise<ProgramDetail | null> {
   try {
     const res = (await programs.getProgram(id)) as ProgramDetail | null;
-    if (!res) return placeholderProgramDetail(id);
-    return {
-      ...placeholderProgramDetail(id),
-      ...res,
-      schedule: res.schedule ?? placeholderProgramDetail(id).schedule,
-    };
+    if (!res) return null;
+    return { ...res, schedule: res.schedule ?? [] };
   } catch {
-    return placeholderProgramDetail(id);
+    return null;
   }
 }
 
@@ -57,11 +52,13 @@ export default function ProgramDetailPage({ params }: { params: Promise<{ id: st
           Programs
         </Link>
 
-        {isLoading || !data ? (
+        {isLoading ? (
           <>
             <Skeleton className="h-48" />
             <Skeleton className="h-72" />
           </>
+        ) : !data ? (
+          <p className="text-sm text-text-secondary">Program not found.</p>
         ) : (
           <ProgramDetailView
             program={data}

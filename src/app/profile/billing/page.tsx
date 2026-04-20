@@ -10,15 +10,13 @@ import { AppShell } from "@/components/layout/AppShell";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { placeholderSubscription, type Subscription } from "@/lib/profile/types";
+import type { Subscription } from "@/lib/profile/types";
 
-async function fetchSubscription(): Promise<Subscription> {
+async function fetchSubscription(): Promise<Subscription | null> {
   try {
-    const res = (await subscriptions.getMySubscription()) as Subscription | null;
-    if (!res) return placeholderSubscription();
-    return res;
+    return ((await subscriptions.getMySubscription()) as Subscription | null) ?? null;
   } catch {
-    return placeholderSubscription();
+    return null;
   }
 }
 
@@ -37,7 +35,7 @@ export default function BillingPage() {
     if (!authLoading && !user) router.replace("/login");
   }, [authLoading, user, router]);
 
-  const { data: sub } = useQuery({
+  const { data: sub, isLoading: subLoading } = useQuery({
     queryKey: subscriptions.keys.all,
     queryFn: fetchSubscription,
   });
@@ -59,7 +57,24 @@ export default function BillingPage() {
           Profile
         </Link>
 
-        {sub && (
+        {subLoading ? (
+          <p className="text-sm text-text-secondary">Loading…</p>
+        ) : !sub ? (
+          <Card>
+            <CardContent>
+              <p className="text-sm text-text-secondary">
+                No subscription yet. Pick a plan to get started.
+              </p>
+              <div className="mt-3">
+                <Link href="/plans">
+                  <Button variant="primary" fullWidth={false} className="!h-11 px-5 text-sm">
+                    View plans
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        ) : (
           <>
             <Card>
               <CardHeader

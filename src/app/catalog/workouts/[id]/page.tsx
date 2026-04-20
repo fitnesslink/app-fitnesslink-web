@@ -12,19 +12,14 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { WorkoutDetailView } from "@/components/catalog/WorkoutDetailView";
 import { MovementPreviewSheet } from "@/components/catalog/MovementPreviewSheet";
 import type { WorkoutDetail } from "@/lib/catalog/types";
-import { placeholderWorkoutDetail } from "@/lib/catalog/placeholder";
 
-async function fetchWorkoutDetail(id: string): Promise<WorkoutDetail> {
+async function fetchWorkoutDetail(id: string): Promise<WorkoutDetail | null> {
   try {
     const res = (await workouts.getWorkout(id)) as WorkoutDetail | null;
-    if (!res) return placeholderWorkoutDetail(id);
-    return {
-      ...placeholderWorkoutDetail(id),
-      ...res,
-      phases: res.phases ?? placeholderWorkoutDetail(id).phases,
-    };
+    if (!res) return null;
+    return { ...res, phases: res.phases ?? [] };
   } catch {
-    return placeholderWorkoutDetail(id);
+    return null;
   }
 }
 
@@ -59,11 +54,13 @@ export default function WorkoutDetailPage({ params }: { params: Promise<{ id: st
           Workouts
         </Link>
 
-        {isLoading || !data ? (
+        {isLoading ? (
           <>
             <Skeleton className="h-48" />
             <Skeleton className="h-64" />
           </>
+        ) : !data ? (
+          <p className="text-sm text-text-secondary">Workout not found.</p>
         ) : (
           <WorkoutDetailView
             workout={data}

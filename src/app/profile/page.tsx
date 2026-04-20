@@ -8,7 +8,6 @@ import { AppShell } from "@/components/layout/AppShell";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Avatar } from "@/components/ui/Avatar";
-import { placeholderProfile } from "@/lib/profile/types";
 
 const MENU = [
   { href: "/profile/personal", title: "Personal info", desc: "Name, email, avatar, height" },
@@ -30,11 +29,7 @@ export default function ProfileHubPage() {
 
   if (isLoading || !user) return null;
 
-  const profile = placeholderProfile();
-  const displayName =
-    user.firstName || user.lastName
-      ? `${user.firstName} ${user.lastName}`.trim()
-      : `${profile.firstName} ${profile.lastName}`.trim();
+  const displayName = `${user.firstName ?? ""} ${user.lastName ?? ""}`.trim() || user.email;
 
   return (
     <AppShell subtitle="Profile">
@@ -48,9 +43,6 @@ export default function ProfileHubPage() {
                   {displayName}
                 </h1>
                 <p className="text-sm text-text-secondary truncate">{user.email}</p>
-                {profile.bio && (
-                  <p className="text-sm text-text-secondary mt-1">{profile.bio}</p>
-                )}
               </div>
             </div>
           </CardContent>

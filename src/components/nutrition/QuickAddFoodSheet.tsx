@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { foods, foodEntries } from "@/lib/api/nutrition";
 import { Sheet } from "@/components/ui/Sheet";
@@ -12,7 +12,6 @@ import { EmptyState } from "@/components/ui/EmptyState";
 import {
   MEAL_LABELS,
   MEAL_TYPES,
-  PLACEHOLDER_FOODS,
   type FoodSummary,
   type MealType,
 } from "@/lib/nutrition/types";
@@ -23,23 +22,38 @@ interface QuickAddFoodSheetProps {
   defaultMealType?: MealType;
 }
 
+interface RawFoodSearchResult {
+  id?: string;
+  description?: string | null;
+  brandOwner?: string | null;
+  calories?: number;
+  protein?: number;
+  carbs?: number;
+  fat?: number;
+  servingSize?: number;
+  servingSizeUnit?: string | null;
+}
+
 async function searchFoods(query: string): Promise<FoodSummary[]> {
   try {
     const res = (await foods.listFoodsSearch({ query })) as
-      | { items?: FoodSummary[] }
-      | FoodSummary[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    if (items.length === 0) return filterPlaceholders(query);
-    return items;
+      | { data?: RawFoodSearchResult[]; items?: RawFoodSearchResult[] }
+      | RawFoodSearchResult[];
+    const raw = Array.isArray(res) ? res : res.data ?? res.items ?? [];
+    return raw.map((r) => ({
+      id: r.id ?? "",
+      name: r.description ?? "",
+      brand: r.brandOwner ?? undefined,
+      servingSize: r.servingSize ?? 0,
+      servingUnit: r.servingSizeUnit ?? "",
+      calories: r.calories ?? 0,
+      protein: r.protein ?? 0,
+      carbs: r.carbs ?? 0,
+      fat: r.fat ?? 0,
+    }));
   } catch {
-    return filterPlaceholders(query);
+    return [];
   }
-}
-
-function filterPlaceholders(query: string): FoodSummary[] {
-  if (!query) return PLACEHOLDER_FOODS;
-  const q = query.toLowerCase();
-  return PLACEHOLDER_FOODS.filter((f) => f.name.toLowerCase().includes(q));
 }
 
 export function QuickAddFoodSheet({
@@ -59,8 +73,6 @@ export function QuickAddFoodSheet({
     queryFn: () => searchFoods(search),
     enabled: open,
   });
-
-  const recents = useMemo(() => PLACEHOLDER_FOODS.slice(0, 5), []);
 
   const log = useMutation({
     mutationFn: async () => {
@@ -202,7 +214,7 @@ export function QuickAddFoodSheet({
               <p className="text-[10px] font-semibold uppercase tracking-wide text-text-secondary mb-2">
                 Recents
               </p>
-              <FoodList foods={recents} onPick={setSelected} />
+              <EmptyState title="No recent foods" description="Your recent logs will show here." />
             </div>
           )}
 

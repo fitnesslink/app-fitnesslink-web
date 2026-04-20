@@ -11,19 +11,15 @@ import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { HabitHeatmap } from "@/components/profile/HabitHeatmap";
-import { placeholderHabit, type HabitDetail } from "@/lib/profile/types";
+import type { HabitDetail } from "@/lib/profile/types";
 
-async function fetchHabit(id: string): Promise<HabitDetail> {
+async function fetchHabit(id: string): Promise<HabitDetail | null> {
   try {
     const res = (await habitsApi.getHabit(id)) as HabitDetail | null;
-    if (!res) return placeholderHabit(id);
-    return {
-      ...placeholderHabit(id),
-      ...res,
-      completionByDate: res.completionByDate ?? placeholderHabit(id).completionByDate,
-    };
+    if (!res) return null;
+    return { ...res, completionByDate: res.completionByDate ?? {} };
   } catch {
-    return placeholderHabit(id);
+    return null;
   }
 }
 
@@ -37,7 +33,7 @@ export default function HabitDetailPage({ params }: { params: Promise<{ id: stri
     if (!authLoading && !user) router.replace("/login");
   }, [authLoading, user, router]);
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: habitsApi.keys.detail(id),
     queryFn: () => fetchHabit(id),
     enabled: !!id,
@@ -53,7 +49,25 @@ export default function HabitDetailPage({ params }: { params: Promise<{ id: stri
     onSuccess: () => qc.invalidateQueries({ queryKey: habitsApi.keys.detail(id) }),
   });
 
-  if (authLoading || !user || !data) return null;
+  if (authLoading || !user) return null;
+  if (isLoading) {
+    return (
+      <AppShell subtitle="Habit">
+        <div className="max-w-3xl mx-auto px-4 lg:px-0 py-6">
+          <p className="text-sm text-text-secondary">Loading…</p>
+        </div>
+      </AppShell>
+    );
+  }
+  if (!data) {
+    return (
+      <AppShell subtitle="Habit">
+        <div className="max-w-3xl mx-auto px-4 lg:px-0 py-6">
+          <p className="text-sm text-text-secondary">Habit not found.</p>
+        </div>
+      </AppShell>
+    );
+  }
 
   const todayKey = new Date().toISOString().slice(0, 10);
   const doneToday = (data.completionByDate[todayKey] ?? 0) > 0;

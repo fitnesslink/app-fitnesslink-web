@@ -4,5 +4,7 @@ export * as barcode from "./barcode";
 export * as foodEntries from "./food_entries";
 export * as foods from "./foods";
 export * as grocery from "./grocery";
+export * as mealPlanTemplates from "./meal_plan_templates";
 export * as mealSlots from "./meal_slots";
 export * as nutritionGoals from "./nutrition_goals";
+export * as recipes from "./recipes";

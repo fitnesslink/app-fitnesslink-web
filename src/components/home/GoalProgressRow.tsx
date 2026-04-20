@@ -20,12 +20,6 @@ interface GoalCard {
   accent?: "primary" | "orange" | "purple" | "blue";
 }
 
-const PLACEHOLDER_GOALS: GoalCard[] = [
-  { id: "p1", title: "Workout minutes", targetValue: 180, currentValue: 120, targetUnit: "min", accent: "primary" },
-  { id: "p2", title: "Steps", targetValue: 10000, currentValue: 6200, targetUnit: "steps", accent: "orange" },
-  { id: "p3", title: "Water", targetValue: 64, currentValue: 40, targetUnit: "oz", accent: "blue" },
-];
-
 const accentColor: Record<NonNullable<GoalCard["accent"]>, string> = {
   primary: "#23AF8D",
   orange: "#F69833",
@@ -35,11 +29,12 @@ const accentColor: Record<NonNullable<GoalCard["accent"]>, string> = {
 
 async function fetchGoals(): Promise<GoalCard[]> {
   try {
-    const res = (await goals.listGoals()) as { items?: GoalCard[] } | GoalCard[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : PLACEHOLDER_GOALS;
+    const res = (await goals.listGoals()) as
+      | { data?: GoalCard[]; items?: GoalCard[] }
+      | GoalCard[];
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return PLACEHOLDER_GOALS;
+    return [];
   }
 }
 

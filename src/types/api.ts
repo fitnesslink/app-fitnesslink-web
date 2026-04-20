@@ -25,7 +25,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Billing.Application.Features.Customers.DTOs.CustomerDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Billing.Application.Features.Customers.DTOs.CustomerDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Billing.Application.Features.Customers.DTOs.CustomerDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -58,7 +73,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Billing.Application.Features.Plans.DTOs.SubscriptionPlanDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Billing.Application.Features.Plans.DTOs.SubscriptionPlanDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Billing.Application.Features.Plans.DTOs.SubscriptionPlanDto"][];
+                    };
                 };
             };
         };
@@ -91,7 +110,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Billing.Application.Features.Subscriptions.DTOs.SubscriptionDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Billing.Application.Features.Subscriptions.DTOs.SubscriptionDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Billing.Application.Features.Subscriptions.DTOs.SubscriptionDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -128,6 +162,17 @@ export interface paths {
                     };
                     content?: never;
                 };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
             };
         };
         delete?: never;
@@ -160,6 +205,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -194,6 +250,17 @@ export interface paths {
                     };
                     content?: never;
                 };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
             };
         };
         delete?: never;
@@ -223,7 +290,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Achievements.DTOs.AchievementDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Achievements.DTOs.AchievementDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Achievements.DTOs.AchievementDto"][];
+                    };
                 };
             };
         };
@@ -243,12 +314,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -279,7 +365,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Achievements.DTOs.UserAchievementDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Achievements.DTOs.UserAchievementDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Achievements.DTOs.UserAchievementDto"][];
+                    };
                 };
             };
         };
@@ -363,6 +453,45 @@ export interface paths {
                 };
             };
         };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/audit-logs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    since?: string;
+                    until?: string;
+                    actor?: string;
+                    page?: number;
+                    pageSize?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -471,7 +600,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.WeightEntryDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.WeightEntryDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.WeightEntryDto"][];
+                    };
                 };
             };
         };
@@ -506,7 +639,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.WeightEntryDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.WeightEntryDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.WeightEntryDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -527,12 +675,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -548,12 +718,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -586,12 +767,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -622,7 +818,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.BodyMeasurementDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.BodyMeasurementDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.BodyMeasurementDto"][];
+                    };
                 };
             };
         };
@@ -658,12 +858,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -698,12 +913,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -719,12 +956,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -754,7 +1002,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.ProgressPhotoDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.ProgressPhotoDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.ProgressPhotoDto"][];
+                    };
                 };
             };
         };
@@ -790,12 +1042,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -826,12 +1093,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -864,7 +1142,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Calendar.DTOs.CalendarEntryDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Calendar.DTOs.CalendarEntryDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Calendar.DTOs.CalendarEntryDto"][];
+                    };
                 };
             };
         };
@@ -899,7 +1181,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Calendar.DTOs.CalendarEntryDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Calendar.DTOs.CalendarEntryDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Calendar.DTOs.CalendarEntryDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -920,12 +1217,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -941,12 +1260,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -979,12 +1309,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -1339,7 +1684,192 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/core/api/v1/goals": {
+    "/core/api/v1/content/bulk-tag": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Tags.DTOs.BulkTagContentRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Tags.DTOs.BulkTagContentRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Tags.DTOs.BulkTagContentRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/content/{type}/{id}/tags": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    type: string;
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Tags.DTOs.AttachContentTagsRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Tags.DTOs.AttachContentTagsRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Tags.DTOs.AttachContentTagsRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/content/{type}/{id}/versions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    page?: number;
+                    pageSize?: number;
+                };
+                header?: never;
+                path: {
+                    type: string;
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    type: string;
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentVersions.DTOs.CreateContentVersionRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentVersions.DTOs.CreateContentVersionRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentVersions.DTOs.CreateContentVersionRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/content/{type}/{id}/versions/diff": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    from?: number;
+                    to?: number;
+                };
+                header?: never;
+                path: {
+                    type: string;
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/content/{type}/{id}/versions/{versionId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1349,6 +1879,85 @@ export interface paths {
         get: {
             parameters: {
                 query?: never;
+                header?: never;
+                path: {
+                    type: string;
+                    id: string;
+                    versionId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/content/{type}/{id}/versions/{versionId}/restore": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    type: string;
+                    id: string;
+                    versionId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/contributors": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    page?: number;
+                    pageSize?: number;
+                    type?: string;
+                    includeDeleted?: boolean;
+                };
                 header?: never;
                 path?: never;
                 cookie?: never;
@@ -1374,9 +1983,9 @@ export interface paths {
             };
             requestBody?: {
                 content: {
-                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.CreateGoalRequest"];
-                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.CreateGoalRequest"];
-                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.CreateGoalRequest"];
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Contributors.DTOs.CreateContributorRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Contributors.DTOs.CreateContributorRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Contributors.DTOs.CreateContributorRequest"];
                 };
             };
             responses: {
@@ -1395,7 +2004,82 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/core/api/v1/goals/{id}": {
+    "/core/api/v1/contributors/pending-approval": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    page?: number;
+                    pageSize?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/contributors/bulk-reassign": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Contributors.DTOs.BulkReassignRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Contributors.DTOs.BulkReassignRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Contributors.DTOs.BulkReassignRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/contributors/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1433,9 +2117,9 @@ export interface paths {
             };
             requestBody?: {
                 content: {
-                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.UpdateGoalRequest"];
-                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.UpdateGoalRequest"];
-                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.UpdateGoalRequest"];
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Contributors.DTOs.UpdateContributorRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Contributors.DTOs.UpdateContributorRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Contributors.DTOs.UpdateContributorRequest"];
                 };
             };
             responses: {
@@ -1474,6 +2158,316 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/core/api/v1/contributors/{id}/content": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    page?: number;
+                    pageSize?: number;
+                };
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/contributors/{id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/contributors/{id}/reject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/goals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.GoalDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.GoalDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.GoalDto"][];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.CreateGoalRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.CreateGoalRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.CreateGoalRequest"];
+                };
+            };
+            responses: {
+                /** @description Created */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/goals/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.GoalDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.GoalDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.GoalDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.UpdateGoalRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.UpdateGoalRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Goals.DTOs.UpdateGoalRequest"];
+                };
+            };
+            responses: {
+                /** @description No Content */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        post?: never;
+        delete: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description No Content */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/core/api/v1/goals/{id}/progress": {
         parameters: {
             query?: never;
@@ -1499,12 +2493,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -1536,7 +2552,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"][];
+                    };
                 };
             };
         };
@@ -1556,12 +2576,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -1592,7 +2627,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"][];
+                    };
                 };
             };
         };
@@ -1627,7 +2666,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"][];
+                    };
                 };
             };
         };
@@ -1662,7 +2705,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -1683,12 +2741,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -1704,12 +2784,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -1744,12 +2835,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -1782,7 +2888,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitStreakDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitStreakDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitStreakDto"];
+                    };
                 };
             };
         };
@@ -1823,7 +2933,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Media.DTOs.ResolvedMediaItem"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Media.DTOs.ResolvedMediaItem"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Media.DTOs.ResolvedMediaItem"][];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -1856,7 +2981,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Media.DTOs.MediaManifest"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Media.DTOs.MediaManifest"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Media.DTOs.MediaManifest"];
+                    };
                 };
             };
         };
@@ -1889,7 +3018,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Milestones.DTOs.MilestoneDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Milestones.DTOs.MilestoneDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Milestones.DTOs.MilestoneDto"][];
+                    };
                 };
             };
         };
@@ -1909,12 +3042,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -1947,7 +3095,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Milestones.DTOs.MilestoneDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Milestones.DTOs.MilestoneDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Milestones.DTOs.MilestoneDto"][];
+                    };
                 };
             };
         };
@@ -1978,12 +3130,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -2006,6 +3169,8 @@ export interface paths {
                 query?: {
                     page?: number;
                     pageSize?: number;
+                    source?: string;
+                    contributorId?: string;
                 };
                 header?: never;
                 path?: never;
@@ -2018,7 +3183,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
                 };
             };
         };
@@ -2038,12 +3207,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -2074,7 +3258,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementListDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementListDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementListDto"][];
+                    };
                 };
             };
         };
@@ -2109,7 +3297,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -2130,12 +3333,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -2151,6 +3376,181 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
+                /** @description No Content */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/movements/{id}/publish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/movements/{id}/unpublish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/organization": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
                 /** @description OK */
                 200: {
                     headers: {
@@ -2160,6 +3560,32 @@ export interface paths {
                 };
             };
         };
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Organization.DTOs.UpdateOrganizationRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Organization.DTOs.UpdateOrganizationRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Organization.DTOs.UpdateOrganizationRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        post?: never;
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -2289,6 +3715,45 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/core/api/v1/personalization/simulate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Personalization.DTOs.SimulateMatchRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Personalization.DTOs.SimulateMatchRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Personalization.DTOs.SimulateMatchRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/core/api/v1/programs": {
         parameters: {
             query?: never;
@@ -2301,6 +3766,8 @@ export interface paths {
                 query?: {
                     page?: number;
                     pageSize?: number;
+                    source?: string;
+                    contributorId?: string;
                 };
                 header?: never;
                 path?: never;
@@ -2313,7 +3780,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
                 };
             };
         };
@@ -2333,12 +3804,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -2369,7 +3855,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramListDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramListDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramListDto"][];
+                    };
                 };
             };
         };
@@ -2382,6 +3872,593 @@ export interface paths {
         trace?: never;
     };
     "/core/api/v1/programs/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.UpdateProgramRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.UpdateProgramRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.UpdateProgramRequest"];
+                };
+            };
+            responses: {
+                /** @description No Content */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/programs/{id}/weekly-workouts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.AddWeeklyWorkoutRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.AddWeeklyWorkoutRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.AddWeeklyWorkoutRequest"];
+                };
+            };
+            responses: {
+                /** @description Created */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/programs/{id}/publish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/programs/{id}/unpublish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/reports/workouts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    since?: string;
+                    to?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.WorkoutReportDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.WorkoutReportDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.WorkoutReportDto"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/reports/nutrition": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    since?: string;
+                    to?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.NutritionReportDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.NutritionReportDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.NutritionReportDto"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/reports/admin-overview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.AdminOverviewDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.AdminOverviewDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.AdminOverviewDto"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/reports/customer/{id}/adherence": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    since?: string;
+                    until?: string;
+                };
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.CustomerAdherenceReportDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.CustomerAdherenceReportDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.CustomerAdherenceReportDto"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/reports/content/{id}/engagement": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    type?: string;
+                };
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.ContentEngagementReportDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.ContentEngagementReportDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.ContentEngagementReportDto"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/roles": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.CreateRoleRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.CreateRoleRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.CreateRoleRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/roles/{id}/permissions": {
         parameters: {
             query?: never;
             header?: never;
@@ -2419,9 +4496,9 @@ export interface paths {
             };
             requestBody?: {
                 content: {
-                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.UpdateProgramRequest"];
-                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.UpdateProgramRequest"];
-                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.UpdateProgramRequest"];
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.UpdateRolePermissionsRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.UpdateRolePermissionsRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.UpdateRolePermissionsRequest"];
                 };
             };
             responses: {
@@ -2434,119 +4511,6 @@ export interface paths {
                 };
             };
         };
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/core/api/v1/programs/{id}/weekly-workouts": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.AddWeeklyWorkoutRequest"];
-                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.AddWeeklyWorkoutRequest"];
-                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.AddWeeklyWorkoutRequest"];
-                };
-            };
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/core/api/v1/reports/workouts": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: {
-                    since?: string;
-                    to?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/core/api/v1/reports/nutrition": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: {
-                    since?: string;
-                    to?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        put?: never;
         post?: never;
         delete?: never;
         options?: never;
@@ -2575,7 +4539,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"][];
+                    };
                 };
             };
         };
@@ -2595,12 +4563,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -2633,7 +4616,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -2666,7 +4664,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"][];
+                    };
                 };
             };
         };
@@ -2701,7 +4703,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto"][];
+                    };
                 };
             };
         };
@@ -2739,12 +4745,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -2777,7 +4805,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionEntryDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionEntryDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionEntryDto"][];
+                    };
                 };
             };
         };
@@ -2799,12 +4831,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -2837,7 +4884,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionBodyDataDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionBodyDataDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionBodyDataDto"][];
+                    };
                 };
             };
         };
@@ -2859,12 +4910,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -2952,7 +5018,42 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/core/api/v1/users/me": {
+    "/core/api/v1/tags": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    group?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/taxonomy": {
         parameters: {
             query?: never;
             header?: never;
@@ -2979,6 +5080,280 @@ export interface paths {
         };
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/taxonomy/groups": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Taxonomy.DTOs.AddTaxonomyGroupRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Taxonomy.DTOs.AddTaxonomyGroupRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Taxonomy.DTOs.AddTaxonomyGroupRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/taxonomy/groups/{id}/tags": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Taxonomy.DTOs.AddTaxonomyTagRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Taxonomy.DTOs.AddTaxonomyTagRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Taxonomy.DTOs.AddTaxonomyTagRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/users/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.UserDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.UserDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.UserDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    page?: number;
+                    pageSize?: number;
+                    isActive?: boolean;
+                    role?: string;
+                    search?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserListItemDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserListItemDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserListItemDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.CreateUserRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.CreateUserRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.CreateUserRequest"];
+                };
+            };
+            responses: {
+                /** @description Created */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/users/invite": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.InviteStaffUserRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.InviteStaffUserRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.InviteStaffUserRequest"];
+                };
+            };
+            responses: {
+                /** @description Created */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.InviteStaffUserResponse"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.InviteStaffUserResponse"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.InviteStaffUserResponse"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Conflict */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
         delete?: never;
         options?: never;
         head?: never;
@@ -3008,7 +5383,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.UserDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.UserDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.UserDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3029,12 +5419,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3045,7 +5457,137 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/core/api/v1/users": {
+    "/core/api/v1/users/{id}/programs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    page?: number;
+                    pageSize?: number;
+                };
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.UserAssignedProgramDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.UserAssignedProgramDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.UserAssignedProgramDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/users/{id}/sessions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    page?: number;
+                    pageSize?: number;
+                };
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserSessionDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserSessionDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserSessionDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/users/{id}/deactivate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description No Content */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/users/{id}/role": {
         parameters: {
             query?: never;
             header?: never;
@@ -3058,14 +5600,16 @@ export interface paths {
             parameters: {
                 query?: never;
                 header?: never;
-                path?: never;
+                path: {
+                    id: string;
+                };
                 cookie?: never;
             };
             requestBody?: {
                 content: {
-                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.CreateUserRequest"];
-                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.CreateUserRequest"];
-                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.CreateUserRequest"];
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.AssignRoleRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.AssignRoleRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.AssignRoleRequest"];
                 };
             };
             responses: {
@@ -3074,7 +5618,33 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.AssignRoleResult"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.AssignRoleResult"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.AssignRoleResult"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3107,7 +5677,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.UserPreferenceDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.UserPreferenceDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.UserPreferenceDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3128,12 +5713,23 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3176,6 +5772,28 @@ export interface paths {
                     };
                     content?: never;
                 };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Unauthorized */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
             };
         };
         delete?: never;
@@ -3196,6 +5814,8 @@ export interface paths {
                 query?: {
                     page?: number;
                     pageSize?: number;
+                    source?: string;
+                    contributorId?: string;
                 };
                 header?: never;
                 path?: never;
@@ -3208,7 +5828,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
                 };
             };
         };
@@ -3228,12 +5852,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3264,7 +5903,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutListDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutListDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutListDto"][];
+                    };
                 };
             };
         };
@@ -3299,7 +5942,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3320,12 +5978,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3341,12 +6021,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3378,7 +6069,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto"][];
+                    };
                 };
             };
         };
@@ -3413,7 +6108,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutTaskDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutTaskDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutTaskDto"][];
+                    };
                 };
             };
         };
@@ -3449,12 +6148,161 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutTaskDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutTaskDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutTaskDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/workouts/{id}/publish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/core/api/v1/workouts/{id}/unpublish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
         delete?: never;
         options?: never;
         head?: never;
@@ -3485,12 +6333,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3521,12 +6384,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3561,12 +6435,23 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3597,7 +6482,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Notifications.Application.Features.Preferences.DTOs.NotificationPreferenceDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Notifications.Application.Features.Preferences.DTOs.NotificationPreferenceDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Notifications.Application.Features.Preferences.DTOs.NotificationPreferenceDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3616,12 +6516,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3656,7 +6578,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Notifications.Application.Features.Notifications.DTOs.NotificationItemDto, FitnessLink.Module.Notifications.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Notifications.Application.Features.Notifications.DTOs.NotificationItemDto, FitnessLink.Module.Notifications.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Notifications.Application.Features.Notifications.DTOs.NotificationItemDto, FitnessLink.Module.Notifications.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
                 };
             };
         };
@@ -3689,7 +6615,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Notifications.Application.Features.Notifications.DTOs.UnreadCountDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Notifications.Application.Features.Notifications.DTOs.UnreadCountDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Notifications.Application.Features.Notifications.DTOs.UnreadCountDto"];
+                    };
                 };
             };
         };
@@ -3720,12 +6650,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3753,8 +6694,8 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
@@ -3792,7 +6733,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Foods.DTOs.BarcodeProductDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Foods.DTOs.BarcodeProductDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Foods.DTOs.BarcodeProductDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3827,7 +6783,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto"][];
+                    };
                 };
             };
         };
@@ -3863,7 +6823,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
                 };
             };
         };
@@ -3898,7 +6862,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3919,12 +6898,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3940,12 +6941,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -3978,12 +6990,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -4016,7 +7043,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Foods.DTOs.FoodSearchResultDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Foods.DTOs.FoodSearchResultDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Foods.DTOs.FoodSearchResultDto"][];
+                    };
                 };
             };
         };
@@ -4051,7 +7082,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Foods.DTOs.FoodSearchResultDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Foods.DTOs.FoodSearchResultDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Foods.DTOs.FoodSearchResultDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -4084,7 +7130,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Grocery.DTOs.GroceryItemDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Grocery.DTOs.GroceryItemDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Grocery.DTOs.GroceryItemDto"][];
+                    };
                 };
             };
         };
@@ -4120,12 +7170,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -4154,12 +7219,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -4195,6 +7271,17 @@ export interface paths {
                     };
                     content?: never;
                 };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
             };
         };
         delete?: never;
@@ -4224,15 +7311,169 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
                 };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
             };
         };
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/nutrition/api/v1/meal-plan-templates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    page?: number;
+                    pageSize?: number;
+                    source?: string;
+                    contributorId?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.MealPlanTemplateDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.MealPlanTemplateDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.MealPlanTemplateDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.CreateMealPlanTemplateRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.CreateMealPlanTemplateRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.CreateMealPlanTemplateRequest"];
+                };
+            };
+            responses: {
+                /** @description Created */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/nutrition/api/v1/meal-plan-templates/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.UpdateMealPlanTemplateRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.UpdateMealPlanTemplateRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.UpdateMealPlanTemplateRequest"];
+                };
+            };
+            responses: {
+                /** @description No Content */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        post?: never;
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -4261,7 +7502,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealSlots.DTOs.MealSlotDto"][];
+                        "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealSlots.DTOs.MealSlotDto"][];
+                        "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealSlots.DTOs.MealSlotDto"][];
+                    };
                 };
             };
         };
@@ -4296,7 +7541,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealSlots.DTOs.MealSlotDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealSlots.DTOs.MealSlotDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealSlots.DTOs.MealSlotDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -4317,12 +7577,34 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -4338,12 +7620,23 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description OK */
-                200: {
+                /** @description No Content */
+                204: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content?: never;
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -4376,12 +7669,27 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description OK */
-                200: {
+                /** @description Created */
+                201: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -4412,7 +7720,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.NutritionGoals.DTOs.NutritionGoalDto"];
+                        "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.NutritionGoals.DTOs.NutritionGoalDto"];
+                        "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.NutritionGoals.DTOs.NutritionGoalDto"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
                 };
             };
         };
@@ -4455,8 +7778,385 @@ export interface paths {
                     };
                     content?: never;
                 };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
             };
         };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/nutrition/api/v1/recipes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    page?: number;
+                    pageSize?: number;
+                    source?: string;
+                    contributorId?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.Recipes.DTOs.RecipeDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.Recipes.DTOs.RecipeDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.Recipes.DTOs.RecipeDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Recipes.DTOs.CreateRecipeRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Recipes.DTOs.CreateRecipeRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Recipes.DTOs.CreateRecipeRequest"];
+                };
+            };
+            responses: {
+                /** @description Created */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "application/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                        "text/json": components["schemas"]["Microsoft.AspNetCore.Mvc.ProblemDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/tv/pair/init": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/tv/pair/poll/{deviceId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    deviceId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/tv/pair/confirm": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.DevicePairing.DTOs.ConfirmPairingRequest"];
+                    "text/json": components["schemas"]["FitnessLink.Module.Core.Application.Features.DevicePairing.DTOs.ConfirmPairingRequest"];
+                    "application/*+json": components["schemas"]["FitnessLink.Module.Core.Application.Features.DevicePairing.DTOs.ConfirmPairingRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/tv/programs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    page?: number;
+                    pageSize?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/tv/programs/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/tv/workouts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    scope?: string;
+                    page?: number;
+                    pageSize?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/tv/workouts/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/tv/catalog/search": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    q?: string;
+                    limit?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -4467,6 +8167,48 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        "FitnessLink.Module.Billing.Application.Features.Customers.DTOs.CustomerDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            stripeCustomerId?: string | null;
+            appleOriginalTransactionId?: string | null;
+            googlePurchaseToken?: string | null;
+            email?: string | null;
+            /** Format: date-time */
+            createdAtUtc?: string;
+        };
+        "FitnessLink.Module.Billing.Application.Features.Plans.DTOs.SubscriptionPlanDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            tier?: string | null;
+            /** Format: double */
+            priceMonthly?: number;
+            /** Format: double */
+            priceYearly?: number;
+            features?: string | null;
+            isActive?: boolean;
+        };
+        "FitnessLink.Module.Billing.Application.Features.Subscriptions.DTOs.SubscriptionDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            customerId?: string;
+            /** Format: uuid */
+            planId?: string;
+            status?: string | null;
+            source?: string | null;
+            /** Format: date-time */
+            currentPeriodStart?: string;
+            /** Format: date-time */
+            currentPeriodEnd?: string;
+            cancelAtPeriodEnd?: boolean;
+            externalSubscriptionId?: string | null;
+            /** Format: date-time */
+            createdAtUtc?: string;
+        };
         "FitnessLink.Module.Core.Application.Features.AI.DTOs.AnalyzeSessionRequest": {
             /** Format: uuid */
             sessionId?: string;
@@ -4478,9 +8220,31 @@ export interface components {
             /** Format: int32 */
             durationMinutes?: number | null;
         };
+        "FitnessLink.Module.Core.Application.Features.Achievements.DTOs.AchievementDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            description?: string | null;
+            iconUrl?: string | null;
+            category?: string | null;
+            achievementType?: string | null;
+        };
         "FitnessLink.Module.Core.Application.Features.Achievements.DTOs.UnlockAchievementRequest": {
             /** Format: uuid */
             achievementId?: string;
+        };
+        "FitnessLink.Module.Core.Application.Features.Achievements.DTOs.UserAchievementDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            achievementType?: string | null;
+            title?: string | null;
+            description?: string | null;
+            iconName?: string | null;
+            /** Format: date-time */
+            earnedAt?: string;
+            sharedToFeed?: boolean;
         };
         "FitnessLink.Module.Core.Application.Features.Auth.DTOs.LoginRequest": {
             firebaseToken?: string | null;
@@ -4488,6 +8252,20 @@ export interface components {
         "FitnessLink.Module.Core.Application.Features.Auth.DTOs.TokenRequest": {
             email?: string | null;
             password?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.BodyMeasurementDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            /** Format: uuid */
+            anatomyId?: string;
+            /** Format: double */
+            value?: number;
+            /** Format: date-time */
+            logDate?: string;
+            /** Format: date-time */
+            createdAt?: string;
         };
         "FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.CreateMeasurementRequest": {
             /** Format: uuid */
@@ -4512,6 +8290,20 @@ export interface components {
             date?: string;
             notes?: string | null;
         };
+        "FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.ProgressPhotoDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            /** Format: uuid */
+            beforeImageId?: string;
+            /** Format: uuid */
+            afterImageId?: string | null;
+            /** Format: date-time */
+            logDate?: string;
+            /** Format: date-time */
+            createdAt?: string;
+        };
         "FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.UpdateMeasurementRequest": {
             /** Format: uuid */
             anatomyId?: string | null;
@@ -4527,6 +8319,37 @@ export interface components {
             /** Format: date-time */
             date?: string | null;
             notes?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.BodyTracking.DTOs.WeightEntryDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            /** Format: double */
+            weight?: number;
+            unit?: string | null;
+            /** Format: date-time */
+            date?: string;
+            notes?: string | null;
+            /** Format: date-time */
+            createdAt?: string;
+        };
+        "FitnessLink.Module.Core.Application.Features.Calendar.DTOs.CalendarEntryDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            /** Format: date-time */
+            fromTime?: string;
+            /** Format: date-time */
+            toTime?: string | null;
+            rRule?: string | null;
+            /** Format: uuid */
+            workoutId?: string;
+            /** Format: uuid */
+            programId?: string | null;
+            /** Format: date-time */
+            createdAtUtc?: string;
         };
         "FitnessLink.Module.Core.Application.Features.Calendar.DTOs.CreateCalendarEntryRequest": {
             /** Format: date-time */
@@ -4552,6 +8375,49 @@ export interface components {
             /** Format: uuid */
             sharedWithUserId?: string;
         };
+        "FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest": {
+            /** Format: uuid */
+            createdBy?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentResult": {
+            /** Format: uuid */
+            statusId?: string;
+            statusName?: string | null;
+            /** Format: int32 */
+            versionNumber?: number;
+        };
+        "FitnessLink.Module.Core.Application.Features.ContentVersions.DTOs.CreateContentVersionRequest": {
+            label?: string | null;
+            /** Format: uuid */
+            createdBy?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Contributors.DTOs.BulkReassignRequest": {
+            /** Format: uuid */
+            fromContributorId?: string;
+            /** Format: uuid */
+            toContributorId?: string;
+            contentTypes?: string[] | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Contributors.DTOs.CreateContributorRequest": {
+            type?: string | null;
+            /** Format: uuid */
+            userId?: string | null;
+            /** Format: uuid */
+            companyId?: string | null;
+            /** Format: uuid */
+            createdBy?: string;
+            isApproved?: boolean;
+        };
+        "FitnessLink.Module.Core.Application.Features.Contributors.DTOs.UpdateContributorRequest": {
+            /** Format: uuid */
+            userId?: string | null;
+            /** Format: uuid */
+            companyId?: string | null;
+            isApproved?: boolean | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.DevicePairing.DTOs.ConfirmPairingRequest": {
+            code?: string | null;
+        };
         "FitnessLink.Module.Core.Application.Features.Goals.DTOs.CreateGoalRequest": {
             goalType?: string | null;
             title?: string | null;
@@ -4564,6 +8430,33 @@ export interface components {
             /** Format: date-time */
             targetDate?: string | null;
             identityStatement?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Goals.DTOs.GoalDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            goalType?: string | null;
+            title?: string | null;
+            description?: string | null;
+            /** Format: double */
+            targetValue?: number | null;
+            targetUnit?: string | null;
+            /** Format: double */
+            currentValue?: number;
+            /** Format: date-time */
+            startDate?: string;
+            /** Format: date-time */
+            targetDate?: string | null;
+            /** Format: date-time */
+            completedDate?: string | null;
+            status?: string | null;
+            identityStatement?: string | null;
+            trajectoryStatus?: string | null;
+            /** Format: date-time */
+            createdAtUtc?: string;
+            /** Format: date-time */
+            updatedAtUtc?: string | null;
         };
         "FitnessLink.Module.Core.Application.Features.Goals.DTOs.UpdateGoalProgressRequest": {
             /** Format: double */
@@ -4602,6 +8495,57 @@ export interface components {
             sortOrder?: number;
             autoCompleteSource?: string | null;
         };
+        "FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            goalId?: string | null;
+            /** Format: uuid */
+            userId?: string;
+            title?: string | null;
+            description?: string | null;
+            habitType?: string | null;
+            anchorBehavior?: string | null;
+            frequencyType?: string | null;
+            frequencyDays?: string | null;
+            /** Format: double */
+            targetValue?: number | null;
+            targetUnit?: string | null;
+            tier?: string | null;
+            /** Format: int32 */
+            estimatedMinutes?: number | null;
+            isActive?: boolean;
+            /** Format: int32 */
+            sortOrder?: number;
+            autoCompleteSource?: string | null;
+            /** Format: date-time */
+            createdAtUtc?: string;
+            /** Format: date-time */
+            updatedAtUtc?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Habits.DTOs.HabitStreakDto": {
+            id?: string | null;
+            habitId?: string | null;
+            userId?: string | null;
+            /** Format: int32 */
+            currentCount?: number;
+            /** Format: int32 */
+            longestCount?: number;
+            /** Format: int32 */
+            freezesAvailable?: number;
+            /** Format: int32 */
+            freezesUsed?: number;
+            /** Format: date-time */
+            lastCompletedDate?: string | null;
+            /** Format: date-time */
+            lastFreezeDate?: string | null;
+            /** Format: date-time */
+            streakStartDate?: string | null;
+            /** Format: date-time */
+            createdAt?: string | null;
+            /** Format: date-time */
+            updatedAt?: string | null;
+        };
         "FitnessLink.Module.Core.Application.Features.Habits.DTOs.LogHabitRequest": {
             /** Format: date-time */
             completedAt?: string;
@@ -4634,8 +8578,24 @@ export interface components {
             type?: string | null;
             id?: string | null;
         };
+        "FitnessLink.Module.Core.Application.Features.Media.DTOs.MediaManifest": {
+            /** Format: date-time */
+            generatedAt?: string;
+            /** Format: date-time */
+            validUntil?: string;
+            items?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Media.DTOs.ResolvedMediaItem"][] | null;
+        };
         "FitnessLink.Module.Core.Application.Features.Media.DTOs.ResolveMediaRequest": {
             items?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Media.DTOs.MediaItemInput"][] | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Media.DTOs.ResolvedMediaItem": {
+            type?: string | null;
+            id?: string | null;
+            url?: string | null;
+            /** Format: date-time */
+            expiresAt?: string | null;
+            contentHash?: string | null;
+            reason?: string | null;
         };
         "FitnessLink.Module.Core.Application.Features.Milestones.DTOs.CreateMilestoneRequest": {
             /** Format: uuid */
@@ -4645,6 +8605,22 @@ export interface components {
             /** Format: double */
             targetValue?: number;
             targetType?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Milestones.DTOs.MilestoneDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            goalId?: string;
+            title?: string | null;
+            description?: string | null;
+            /** Format: double */
+            targetValue?: number;
+            targetType?: string | null;
+            /** Format: date-time */
+            achievedAt?: string | null;
+            notificationSent?: boolean;
+            /** Format: date-time */
+            createdAt?: string;
         };
         "FitnessLink.Module.Core.Application.Features.Movements.DTOs.CreateMovementRequest": {
             name?: string | null;
@@ -4666,6 +8642,39 @@ export interface components {
             /** Format: uuid */
             createdBy?: string;
         };
+        "FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            description?: string | null;
+            /** Format: uuid */
+            videoId?: string | null;
+            /** Format: uuid */
+            statusId?: string;
+            /** Format: uuid */
+            contributorId?: string | null;
+            /** Format: uuid */
+            imageId?: string | null;
+            /** Format: uuid */
+            relatedToId?: string | null;
+            /** Format: uuid */
+            thumbnailId?: string | null;
+            /** Format: uuid */
+            preBuiltTemplateId?: string | null;
+            muscleGroup?: string | null;
+            equipment?: string | null;
+            isFavorite?: boolean;
+            audit?: components["schemas"]["FitnessLink.SharedKernel.Models.AuditDto"];
+        };
+        "FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementListDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            muscleGroup?: string | null;
+            equipment?: string | null;
+            /** Format: uuid */
+            imageId?: string | null;
+        };
         "FitnessLink.Module.Core.Application.Features.Movements.DTOs.UpdateMovementRequest": {
             name?: string | null;
             description?: string | null;
@@ -4678,11 +8687,27 @@ export interface components {
             /** Format: uuid */
             thumbnailId?: string | null;
         };
+        "FitnessLink.Module.Core.Application.Features.Organization.DTOs.UpdateOrganizationRequest": {
+            name?: string | null;
+            logoUrl?: string | null;
+            primaryColor?: string | null;
+            secondaryColor?: string | null;
+            supportEmail?: string | null;
+            contactPhone?: string | null;
+            billingEmail?: string | null;
+            billingPlan?: string | null;
+            website?: string | null;
+            locations?: string | null;
+            integrations?: string | null;
+        };
         "FitnessLink.Module.Core.Application.Features.Personalization.DTOs.SavePersonalizationRequest": {
             /** Format: uuid */
             personalizationId?: string;
             /** Format: uuid */
             personalizationOptionId?: string;
+        };
+        "FitnessLink.Module.Core.Application.Features.Personalization.DTOs.SimulateMatchRequest": {
+            optionIds?: string[] | null;
         };
         "FitnessLink.Module.Core.Application.Features.Programs.DTOs.AddWeeklyWorkoutRequest": {
             /** Format: uuid */
@@ -4716,6 +8741,46 @@ export interface components {
             /** Format: uuid */
             createdBy?: string;
         };
+        "FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            description?: string | null;
+            /** Format: uuid */
+            statusId?: string;
+            /** Format: uuid */
+            contributorId?: string | null;
+            /** Format: uuid */
+            imageId?: string | null;
+            /** Format: uuid */
+            thumbnailId?: string | null;
+            /** Format: uuid */
+            splitId?: string | null;
+            /** Format: int32 */
+            weeks?: number;
+            /** Format: int32 */
+            estimatedTime?: number | null;
+            /** Format: uuid */
+            preBuiltTemplateId?: string | null;
+            time?: string | null;
+            location?: string | null;
+            trainingLevel?: string | null;
+            showInLibrary?: boolean;
+            audit?: components["schemas"]["FitnessLink.SharedKernel.Models.AuditDto"];
+        };
+        "FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramListDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            /** Format: int32 */
+            weeks?: number;
+            /** Format: int32 */
+            estimatedTime?: number | null;
+            /** Format: uuid */
+            imageId?: string | null;
+            /** Format: uuid */
+            contributorId?: string | null;
+        };
         "FitnessLink.Module.Core.Application.Features.Programs.DTOs.UpdateProgramRequest": {
             name?: string | null;
             description?: string | null;
@@ -4730,9 +8795,156 @@ export interface components {
             /** Format: int32 */
             estimatedTime?: number | null;
         };
+        "FitnessLink.Module.Core.Application.Features.Reports.DTOs.ActionRequiredDto": {
+            type?: string | null;
+            description?: string | null;
+            /** Format: int32 */
+            count?: number;
+        };
+        "FitnessLink.Module.Core.Application.Features.Reports.DTOs.AdherenceTrendPointDto": {
+            /** Format: date-time */
+            weekStart?: string;
+            /** Format: double */
+            adherence?: number;
+        };
+        "FitnessLink.Module.Core.Application.Features.Reports.DTOs.AdherenceWeekDto": {
+            /** Format: date-time */
+            weekStart?: string;
+            /** Format: int32 */
+            started?: number;
+            /** Format: int32 */
+            completed?: number;
+        };
+        "FitnessLink.Module.Core.Application.Features.Reports.DTOs.AdminOverviewDto": {
+            kpis?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.AdminOverviewKpisDto"];
+            adherenceTrend?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.AdherenceTrendPointDto"][] | null;
+            actionsRequired?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.ActionRequiredDto"][] | null;
+            recentActivity?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.RecentActivityItemDto"][] | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Reports.DTOs.AdminOverviewKpisDto": {
+            /** Format: int32 */
+            activeCustomers?: number;
+            /** Format: double */
+            avgProgramAdherence?: number;
+            /** Format: int32 */
+            publishVolumeLast30Days?: number;
+            /** Format: int32 */
+            draftCount?: number;
+        };
+        "FitnessLink.Module.Core.Application.Features.Reports.DTOs.ContentEngagementReportDto": {
+            /** Format: uuid */
+            contentId?: string;
+            contentType?: string | null;
+            /** Format: int32 */
+            timesAssigned?: number;
+            /** Format: int32 */
+            sessionsStarted?: number;
+            /** Format: int32 */
+            sessionsCompleted?: number;
+            /** Format: int32 */
+            uniqueUsers?: number;
+            /** Format: int32 */
+            sessionsLast30Days?: number;
+            /** Format: double */
+            averageCompletionSeconds?: number | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Reports.DTOs.CustomerAdherenceReportDto": {
+            /** Format: uuid */
+            userId?: string;
+            /** Format: date-time */
+            since?: string;
+            /** Format: date-time */
+            until?: string;
+            /** Format: int32 */
+            sessionsStarted?: number;
+            /** Format: int32 */
+            sessionsCompleted?: number;
+            /** Format: double */
+            completionRate?: number;
+            /** Format: int32 */
+            activeDays?: number;
+            /** Format: int32 */
+            totalDays?: number;
+            weeklyBreakdown?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Reports.DTOs.AdherenceWeekDto"][] | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Reports.DTOs.NutritionReportDto": {
+            /** Format: double */
+            avgCalories?: number;
+            /** Format: double */
+            goalAdherencePercent?: number;
+            /** Format: double */
+            avgProtein?: number;
+            /** Format: double */
+            avgCarbs?: number;
+            /** Format: double */
+            avgFat?: number;
+            /** Format: double */
+            proteinRatio?: number;
+            /** Format: double */
+            fatRatio?: number;
+            /** Format: double */
+            carbsRatio?: number;
+            /** Format: int32 */
+            currentStreak?: number;
+            /** Format: int32 */
+            longestStreak?: number;
+            /** Format: double */
+            avgSurplus?: number;
+            /** Format: int32 */
+            daysLogged?: number;
+            /** Format: int32 */
+            totalDays?: number;
+        };
+        "FitnessLink.Module.Core.Application.Features.Reports.DTOs.RecentActivityItemDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: date-time */
+            timestamp?: string;
+            action?: string | null;
+            actorDisplay?: string | null;
+            entityType?: string | null;
+            /** Format: uuid */
+            entityId?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Reports.DTOs.WorkoutReportDto": {
+            /** Format: int32 */
+            workoutsCompleted?: number;
+            /** Format: int64 */
+            totalDurationSeconds?: number;
+            /** Format: int32 */
+            incompleteWorkouts?: number;
+            /** Format: double */
+            averageRPE?: number;
+            /** Format: int32 */
+            exercisesCompleted?: number;
+            /** Format: double */
+            totalWeightLifted?: number;
+            /** Format: double */
+            totalCaloriesBurned?: number;
+        };
+        "FitnessLink.Module.Core.Application.Features.Roles.DTOs.AssignRoleRequest": {
+            /** Format: uuid */
+            roleId?: string;
+        };
+        "FitnessLink.Module.Core.Application.Features.Roles.DTOs.AssignRoleResult": {
+            /** Format: uuid */
+            userId?: string;
+            roles?: string[] | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Roles.DTOs.CreateRoleRequest": {
+            name?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Roles.DTOs.UpdateRolePermissionsEntry": {
+            key?: string | null;
+            granted?: boolean;
+        };
+        "FitnessLink.Module.Core.Application.Features.Roles.DTOs.UpdateRolePermissionsRequest": {
+            permissions?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Roles.DTOs.UpdateRolePermissionsEntry"][] | null;
+        };
         "FitnessLink.Module.Core.Application.Features.Sessions.DTOs.CompleteSessionRequest": {
             /** Format: uuid */
             rpeId?: string | null;
+            platform?: string | null;
         };
         "FitnessLink.Module.Core.Application.Features.Sessions.DTOs.LogBodyDataRequest": {
             /** Format: double */
@@ -4760,6 +8972,69 @@ export interface components {
             /** Format: double */
             weightLifted?: number | null;
         };
+        "FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionBodyDataDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            workoutSessionId?: string;
+            /** Format: double */
+            heartRate?: number | null;
+            /** Format: double */
+            caloriesBurned?: number | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            workoutId?: string;
+            name?: string | null;
+            description?: string | null;
+            estimatedTime?: string | null;
+            trainingLevel?: string | null;
+            workoutTasks?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutTaskDto"][] | null;
+            /** Format: uuid */
+            userId?: string | null;
+            /** Format: uuid */
+            programId?: string | null;
+            /** Format: uuid */
+            rpeId?: string | null;
+            /** Format: int32 */
+            currentIndex?: number | null;
+            /** Format: date-time */
+            startDate?: string | null;
+            /** Format: date-time */
+            completionDate?: string | null;
+            /** Format: uuid */
+            nextMovementId?: string | null;
+            /** Format: uuid */
+            workoutPhaseId?: string | null;
+            audit?: components["schemas"]["FitnessLink.SharedKernel.Models.AuditDto"];
+        };
+        "FitnessLink.Module.Core.Application.Features.Sessions.DTOs.SessionEntryDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            workoutSessionId?: string;
+            /** Format: uuid */
+            workoutTaskId?: string;
+            /** Format: uuid */
+            workoutId?: string;
+            /** Format: uuid */
+            programId?: string | null;
+            /** Format: uuid */
+            userId?: string;
+            /** Format: date-time */
+            logDate?: string;
+            /** Format: int32 */
+            reps?: number | null;
+            /** Format: int32 */
+            set?: number | null;
+            /** Format: int32 */
+            intervalSeconds?: number | null;
+            /** Format: double */
+            weightLifted?: number | null;
+            audit?: components["schemas"]["FitnessLink.SharedKernel.Models.AuditDto"];
+        };
         "FitnessLink.Module.Core.Application.Features.Sessions.DTOs.StartSessionRequest": {
             /** Format: uuid */
             workoutId?: string;
@@ -4767,6 +9042,7 @@ export interface components {
             programId?: string;
             /** Format: uuid */
             userId?: string;
+            platform?: string | null;
         };
         "FitnessLink.Module.Core.Application.Features.Sync.DTOs.SyncPullRequest": {
             /** Format: date-time */
@@ -4774,6 +9050,62 @@ export interface components {
         };
         "FitnessLink.Module.Core.Application.Features.Sync.DTOs.SyncPushRequest": {
             data?: unknown;
+        };
+        "FitnessLink.Module.Core.Application.Features.Tags.DTOs.AttachContentTagsRequest": {
+            optionIds?: string[] | null;
+            /** Format: uuid */
+            contributorId?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Tags.DTOs.BulkTagContentItem": {
+            type?: string | null;
+            /** Format: uuid */
+            id?: string;
+        };
+        "FitnessLink.Module.Core.Application.Features.Tags.DTOs.BulkTagContentRequest": {
+            /** Format: uuid */
+            optionId?: string;
+            items?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Tags.DTOs.BulkTagContentItem"][] | null;
+            /** Format: uuid */
+            contributorId?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Taxonomy.DTOs.AddTaxonomyGroupRequest": {
+            name?: string | null;
+            alias?: string | null;
+            /** Format: int32 */
+            order?: number | null;
+            singleSelection?: boolean;
+            isRequired?: boolean;
+        };
+        "FitnessLink.Module.Core.Application.Features.Taxonomy.DTOs.AddTaxonomyTagRequest": {
+            name?: string | null;
+            /** Format: int32 */
+            order?: number | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserListItemDto": {
+            /** Format: uuid */
+            id?: string;
+            firstName?: string | null;
+            lastName?: string | null;
+            email?: string | null;
+            username?: string | null;
+            isActive?: boolean;
+            /** Format: date-time */
+            joinedDate?: string;
+            roles?: string[] | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserSessionDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            workoutId?: string;
+            workoutName?: string | null;
+            /** Format: uuid */
+            programId?: string | null;
+            /** Format: date-time */
+            startDate?: string | null;
+            /** Format: date-time */
+            completionDate?: string | null;
+            isCompleted?: boolean;
         };
         "FitnessLink.Module.Core.Application.Features.Users.DTOs.CreateUserRequest": {
             firstName?: string | null;
@@ -4784,6 +9116,17 @@ export interface components {
             firebaseId?: string | null;
             username?: string | null;
             country?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Users.DTOs.InviteStaffUserRequest": {
+            email?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            role?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Users.DTOs.InviteStaffUserResponse": {
+            /** Format: uuid */
+            userId?: string;
+            firebaseUid?: string | null;
         };
         "FitnessLink.Module.Core.Application.Features.Users.DTOs.UpdatePreferenceRequest": {
             language?: string | null;
@@ -4800,6 +9143,58 @@ export interface components {
             phone?: string | null;
             username?: string | null;
             country?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Users.DTOs.UserAssignedProgramDto": {
+            /** Format: uuid */
+            assignmentId?: string;
+            /** Format: uuid */
+            programId?: string;
+            name?: string | null;
+            description?: string | null;
+            /** Format: uuid */
+            imageId?: string | null;
+            /** Format: int32 */
+            estimatedTime?: number | null;
+            /** Format: int32 */
+            weeks?: number;
+            /** Format: int32 */
+            sortOrder?: number;
+            /** Format: date-time */
+            assignedAt?: string;
+        };
+        "FitnessLink.Module.Core.Application.Features.Users.DTOs.UserDto": {
+            /** Format: uuid */
+            id?: string;
+            firstName?: string | null;
+            lastName?: string | null;
+            email?: string | null;
+            alias?: string | null;
+            phone?: string | null;
+            firebaseId?: string | null;
+            username?: string | null;
+            country?: string | null;
+            /** Format: uuid */
+            profileImageId?: string | null;
+            /** Format: uuid */
+            companyId?: string | null;
+            isActive?: boolean;
+            requirePersonalization?: boolean;
+            /** Format: date-time */
+            createdAtUtc?: string;
+            /** Format: date-time */
+            updatedAtUtc?: string | null;
+            roles?: string[] | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Users.DTOs.UserPreferenceDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            language?: string | null;
+            timezone?: string | null;
+            darkMode?: boolean;
+            /** Format: int32 */
+            workoutSessionType?: number;
         };
         "FitnessLink.Module.Core.Application.Features.Workouts.DTOs.CreateWorkoutRequest": {
             name?: string | null;
@@ -4820,6 +9215,16 @@ export interface components {
             /** Format: uuid */
             createdBy?: string;
         };
+        "FitnessLink.Module.Core.Application.Features.Workouts.DTOs.TaskRowDto": {
+            task?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutTaskDto"];
+            advanced?: string | null;
+            rounds?: string | null;
+            /** Format: int32 */
+            totalRounds?: number;
+            isSuperset?: boolean;
+            isCircuit?: boolean;
+            advancedTasks?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutTaskDto"][] | null;
+        };
         "FitnessLink.Module.Core.Application.Features.Workouts.DTOs.UpdateWorkoutRequest": {
             name?: string | null;
             description?: string | null;
@@ -4833,9 +9238,106 @@ export interface components {
             estimatedTime?: number | null;
             showInLibrary?: boolean | null;
         };
+        "FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            /** Format: uuid */
+            statusId?: string;
+            description?: string | null;
+            /** Format: uuid */
+            contributorId?: string | null;
+            /** Format: uuid */
+            imageId?: string | null;
+            /** Format: uuid */
+            thumbnailId?: string | null;
+            /** Format: int32 */
+            estimatedTime?: number;
+            showInLibrary?: boolean;
+            /** Format: uuid */
+            preBuiltTemplateId?: string | null;
+            time?: string | null;
+            location?: string | null;
+            trainingLevel?: string | null;
+            phases?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutPhaseDto"][] | null;
+            audit?: components["schemas"]["FitnessLink.SharedKernel.Models.AuditDto"];
+        };
+        "FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutListDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            /** Format: int32 */
+            estimatedTime?: number;
+            /** Format: uuid */
+            imageId?: string | null;
+            /** Format: uuid */
+            contributorId?: string | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutPhaseDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            taskRows?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.TaskRowDto"][] | null;
+        };
+        "FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutTaskDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            workoutId?: string;
+            /** Format: uuid */
+            movementId?: string | null;
+            /** Format: int32 */
+            order?: number;
+            /** Format: int32 */
+            sets?: number | null;
+            /** Format: int32 */
+            reps?: number | null;
+            /** Format: int32 */
+            restSeconds?: number | null;
+            /** Format: int32 */
+            intervalSeconds?: number | null;
+            /** Format: uuid */
+            workoutTaskTypeId?: string;
+            /** Format: uuid */
+            workoutPhaseId?: string;
+        };
         "FitnessLink.Module.Notifications.Application.Features.DeviceTokens.DTOs.RegisterDeviceTokenRequest": {
             token?: string | null;
             platform?: string | null;
+        };
+        "FitnessLink.Module.Notifications.Application.Features.Notifications.DTOs.NotificationItemDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            type?: string | null;
+            title?: string | null;
+            body?: string | null;
+            isRead?: boolean;
+            deepLink?: string | null;
+            /** Format: date-time */
+            createdAtUtc?: string;
+        };
+        "FitnessLink.Module.Notifications.Application.Features.Notifications.DTOs.UnreadCountDto": {
+            /** Format: int32 */
+            count?: number;
+        };
+        "FitnessLink.Module.Notifications.Application.Features.Preferences.DTOs.NotificationPreferenceDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            coachingTone?: string | null;
+            /** Format: int32 */
+            maxDailyNotifications?: number;
+            quietHoursStart?: string | null;
+            quietHoursEnd?: string | null;
+            enableHabitReminders?: boolean;
+            enableStreakAlerts?: boolean;
+            enableMilestones?: boolean;
+            enableAiCoaching?: boolean;
+            enableReengagement?: boolean;
+            enableGoalCheckIns?: boolean;
         };
         "FitnessLink.Module.Notifications.Application.Features.Preferences.DTOs.UpdatePreferenceRequest": {
             coachingTone?: string | null;
@@ -4868,6 +9370,30 @@ export interface components {
             loggedAt?: string;
             isCustomTemplate?: boolean;
         };
+        "FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            name?: string | null;
+            /** Format: double */
+            calories?: number;
+            /** Format: double */
+            protein?: number;
+            /** Format: double */
+            fat?: number;
+            /** Format: double */
+            carbs?: number;
+            /** Format: double */
+            servingSize?: number | null;
+            servingUnit?: string | null;
+            mealType?: string | null;
+            /** Format: date-time */
+            loggedAt?: string;
+            isCustomTemplate?: boolean;
+            /** Format: date-time */
+            createdAtUtc?: string;
+        };
         "FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.UpdateFoodEntryRequest": {
             name?: string | null;
             /** Format: double */
@@ -4883,12 +9409,114 @@ export interface components {
             servingUnit?: string | null;
             mealType?: string | null;
         };
+        "FitnessLink.Module.Nutrition.Application.Features.Foods.DTOs.BarcodeProductDto": {
+            /** Format: uuid */
+            id?: string;
+            description?: string | null;
+            brandOwner?: string | null;
+            /** Format: double */
+            calories?: number;
+            /** Format: double */
+            protein?: number;
+            /** Format: double */
+            fat?: number;
+            /** Format: double */
+            carbs?: number;
+            gtinUpc?: string | null;
+        };
+        "FitnessLink.Module.Nutrition.Application.Features.Foods.DTOs.FoodSearchResultDto": {
+            /** Format: uuid */
+            id?: string;
+            description?: string | null;
+            brandOwner?: string | null;
+            /** Format: double */
+            calories?: number;
+            /** Format: double */
+            protein?: number;
+            /** Format: double */
+            fat?: number;
+            /** Format: double */
+            carbs?: number;
+            /** Format: double */
+            servingSize?: number;
+            servingSizeUnit?: string | null;
+        };
         "FitnessLink.Module.Nutrition.Application.Features.Grocery.DTOs.CreateGroceryItemRequest": {
             name?: string | null;
             /** Format: double */
             quantity?: number | null;
             unit?: string | null;
             category?: string | null;
+        };
+        "FitnessLink.Module.Nutrition.Application.Features.Grocery.DTOs.GroceryItemDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            name?: string | null;
+            /** Format: double */
+            quantity?: number | null;
+            unit?: string | null;
+            category?: string | null;
+            isChecked?: boolean;
+            /** Format: date-time */
+            createdAtUtc?: string;
+        };
+        "FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.CreateMealPlanTemplateRequest": {
+            name?: string | null;
+            description?: string | null;
+            /** Format: int32 */
+            durationDays?: number;
+            /** Format: double */
+            totalCalories?: number | null;
+            /** Format: double */
+            proteinTarget?: number | null;
+            /** Format: double */
+            fatTarget?: number | null;
+            /** Format: double */
+            carbsTarget?: number | null;
+            tags?: string | null;
+            /** Format: uuid */
+            contributorId?: string | null;
+            /** Format: uuid */
+            createdBy?: string;
+        };
+        "FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.MealPlanTemplateDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            description?: string | null;
+            /** Format: int32 */
+            durationDays?: number;
+            /** Format: double */
+            totalCalories?: number | null;
+            /** Format: double */
+            proteinTarget?: number | null;
+            /** Format: double */
+            fatTarget?: number | null;
+            /** Format: double */
+            carbsTarget?: number | null;
+            tags?: string | null;
+            /** Format: uuid */
+            contributorId?: string | null;
+            audit?: components["schemas"]["FitnessLink.SharedKernel.Models.AuditDto"];
+        };
+        "FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.UpdateMealPlanTemplateRequest": {
+            name?: string | null;
+            description?: string | null;
+            /** Format: int32 */
+            durationDays?: number | null;
+            /** Format: double */
+            totalCalories?: number | null;
+            /** Format: double */
+            proteinTarget?: number | null;
+            /** Format: double */
+            fatTarget?: number | null;
+            /** Format: double */
+            carbsTarget?: number | null;
+            tags?: string | null;
+            /** Format: uuid */
+            contributorId?: string | null;
         };
         "FitnessLink.Module.Nutrition.Application.Features.MealSlots.DTOs.CreateMealSlotRequest": {
             day?: string | null;
@@ -4904,6 +9532,27 @@ export interface components {
             carbs?: number | null;
             isAISuggestion?: boolean;
             ingredients?: string | null;
+        };
+        "FitnessLink.Module.Nutrition.Application.Features.MealSlots.DTOs.MealSlotDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            day?: string | null;
+            mealType?: string | null;
+            recipeName?: string | null;
+            /** Format: double */
+            calories?: number | null;
+            /** Format: double */
+            protein?: number | null;
+            /** Format: double */
+            fat?: number | null;
+            /** Format: double */
+            carbs?: number | null;
+            isAISuggestion?: boolean;
+            ingredients?: string | null;
+            /** Format: date-time */
+            createdAtUtc?: string;
         };
         "FitnessLink.Module.Nutrition.Application.Features.MealSlots.DTOs.UpdateMealSlotRequest": {
             recipeName?: string | null;
@@ -4926,6 +9575,222 @@ export interface components {
             fatTarget?: number;
             /** Format: double */
             carbsTarget?: number;
+        };
+        "FitnessLink.Module.Nutrition.Application.Features.NutritionGoals.DTOs.NutritionGoalDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            userId?: string;
+            /** Format: double */
+            calorieGoal?: number;
+            /** Format: double */
+            proteinTarget?: number;
+            /** Format: double */
+            fatTarget?: number;
+            /** Format: double */
+            carbsTarget?: number;
+        };
+        "FitnessLink.Module.Nutrition.Application.Features.Recipes.DTOs.CreateRecipeRequest": {
+            name?: string | null;
+            description?: string | null;
+            /** Format: int32 */
+            servings?: number;
+            /** Format: double */
+            servingSize?: number | null;
+            servingUnit?: string | null;
+            /** Format: double */
+            calories?: number;
+            /** Format: double */
+            protein?: number;
+            /** Format: double */
+            fat?: number;
+            /** Format: double */
+            carbs?: number;
+            ingredients?: string | null;
+            instructions?: string | null;
+            imageUrl?: string | null;
+            tags?: string | null;
+            /** Format: uuid */
+            contributorId?: string | null;
+            /** Format: uuid */
+            createdBy?: string;
+        };
+        "FitnessLink.Module.Nutrition.Application.Features.Recipes.DTOs.RecipeDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            description?: string | null;
+            /** Format: int32 */
+            servings?: number;
+            /** Format: double */
+            servingSize?: number | null;
+            servingUnit?: string | null;
+            /** Format: double */
+            calories?: number;
+            /** Format: double */
+            protein?: number;
+            /** Format: double */
+            fat?: number;
+            /** Format: double */
+            carbs?: number;
+            ingredients?: string | null;
+            instructions?: string | null;
+            imageUrl?: string | null;
+            tags?: string | null;
+            /** Format: uuid */
+            contributorId?: string | null;
+            audit?: components["schemas"]["FitnessLink.SharedKernel.Models.AuditDto"];
+        };
+        "FitnessLink.SharedKernel.Models.AuditDto": {
+            /** Format: date-time */
+            timestamp?: string | null;
+            /** Format: date-time */
+            lastUpdateDate?: string | null;
+            isDeleted?: boolean;
+            /** Format: date-time */
+            dateDeleted?: string | null;
+            /** Format: uuid */
+            createdBy?: string | null;
+        };
+        "FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            data?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Movements.DTOs.MovementDto"][] | null;
+            /** Format: int32 */
+            page?: number;
+            /** Format: int32 */
+            pageSize?: number;
+            /** Format: int32 */
+            totalCount?: number;
+            /** Format: int32 */
+            readonly totalPages?: number;
+            readonly hasNextPage?: boolean;
+            readonly hasPreviousPage?: boolean;
+        };
+        "FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            data?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Programs.DTOs.ProgramDto"][] | null;
+            /** Format: int32 */
+            page?: number;
+            /** Format: int32 */
+            pageSize?: number;
+            /** Format: int32 */
+            totalCount?: number;
+            /** Format: int32 */
+            readonly totalPages?: number;
+            readonly hasNextPage?: boolean;
+            readonly hasPreviousPage?: boolean;
+        };
+        "FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserListItemDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            data?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserListItemDto"][] | null;
+            /** Format: int32 */
+            page?: number;
+            /** Format: int32 */
+            pageSize?: number;
+            /** Format: int32 */
+            totalCount?: number;
+            /** Format: int32 */
+            readonly totalPages?: number;
+            readonly hasNextPage?: boolean;
+            readonly hasPreviousPage?: boolean;
+        };
+        "FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserSessionDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            data?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.AdminUserSessionDto"][] | null;
+            /** Format: int32 */
+            page?: number;
+            /** Format: int32 */
+            pageSize?: number;
+            /** Format: int32 */
+            totalCount?: number;
+            /** Format: int32 */
+            readonly totalPages?: number;
+            readonly hasNextPage?: boolean;
+            readonly hasPreviousPage?: boolean;
+        };
+        "FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Users.DTOs.UserAssignedProgramDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            data?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Users.DTOs.UserAssignedProgramDto"][] | null;
+            /** Format: int32 */
+            page?: number;
+            /** Format: int32 */
+            pageSize?: number;
+            /** Format: int32 */
+            totalCount?: number;
+            /** Format: int32 */
+            readonly totalPages?: number;
+            readonly hasNextPage?: boolean;
+            readonly hasPreviousPage?: boolean;
+        };
+        "FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto, FitnessLink.Module.Core.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            data?: components["schemas"]["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.WorkoutDto"][] | null;
+            /** Format: int32 */
+            page?: number;
+            /** Format: int32 */
+            pageSize?: number;
+            /** Format: int32 */
+            totalCount?: number;
+            /** Format: int32 */
+            readonly totalPages?: number;
+            readonly hasNextPage?: boolean;
+            readonly hasPreviousPage?: boolean;
+        };
+        "FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Notifications.Application.Features.Notifications.DTOs.NotificationItemDto, FitnessLink.Module.Notifications.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            data?: components["schemas"]["FitnessLink.Module.Notifications.Application.Features.Notifications.DTOs.NotificationItemDto"][] | null;
+            /** Format: int32 */
+            page?: number;
+            /** Format: int32 */
+            pageSize?: number;
+            /** Format: int32 */
+            totalCount?: number;
+            /** Format: int32 */
+            readonly totalPages?: number;
+            readonly hasNextPage?: boolean;
+            readonly hasPreviousPage?: boolean;
+        };
+        "FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            data?: components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.FoodEntries.DTOs.FoodEntryDto"][] | null;
+            /** Format: int32 */
+            page?: number;
+            /** Format: int32 */
+            pageSize?: number;
+            /** Format: int32 */
+            totalCount?: number;
+            /** Format: int32 */
+            readonly totalPages?: number;
+            readonly hasNextPage?: boolean;
+            readonly hasPreviousPage?: boolean;
+        };
+        "FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.MealPlanTemplateDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            data?: components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.MealPlanTemplates.DTOs.MealPlanTemplateDto"][] | null;
+            /** Format: int32 */
+            page?: number;
+            /** Format: int32 */
+            pageSize?: number;
+            /** Format: int32 */
+            totalCount?: number;
+            /** Format: int32 */
+            readonly totalPages?: number;
+            readonly hasNextPage?: boolean;
+            readonly hasPreviousPage?: boolean;
+        };
+        "FitnessLink.SharedKernel.Models.PagedResult`1[[FitnessLink.Module.Nutrition.Application.Features.Recipes.DTOs.RecipeDto, FitnessLink.Module.Nutrition.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            data?: components["schemas"]["FitnessLink.Module.Nutrition.Application.Features.Recipes.DTOs.RecipeDto"][] | null;
+            /** Format: int32 */
+            page?: number;
+            /** Format: int32 */
+            pageSize?: number;
+            /** Format: int32 */
+            totalCount?: number;
+            /** Format: int32 */
+            readonly totalPages?: number;
+            readonly hasNextPage?: boolean;
+            readonly hasPreviousPage?: boolean;
+        };
+        "Microsoft.AspNetCore.Mvc.ProblemDetails": {
+            type?: string | null;
+            title?: string | null;
+            /** Format: int32 */
+            status?: number | null;
+            detail?: string | null;
+            instance?: string | null;
+        } & {
+            [key: string]: unknown;
         };
     };
     responses: never;

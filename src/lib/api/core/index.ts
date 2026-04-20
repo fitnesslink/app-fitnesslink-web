@@ -2,20 +2,26 @@
 
 export * as achievements from "./achievements";
 export * as ai from "./ai";
+export * as auditLogs from "./audit_logs";
 export * as weight from "./weight";
 export * as measurements from "./measurements";
 export * as progressPhotos from "./progress_photos";
 export * as calendar from "./calendar";
 export * as classification from "./classification";
 export * as content from "./content";
+export * as contributors from "./contributors";
 export * as goals from "./goals";
 export * as habits from "./habits";
 export * as media from "./media";
 export * as milestones from "./milestones";
 export * as movements from "./movements";
+export * as organization from "./organization";
 export * as personalization from "./personalization";
 export * as programs from "./programs";
 export * as reports from "./reports";
+export * as roles from "./roles";
 export * as sessions from "./sessions";
+export * as tags from "./tags";
+export * as taxonomy from "./taxonomy";
 export * as users from "./users";
 export * as workouts from "./workouts";

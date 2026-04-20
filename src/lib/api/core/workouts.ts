@@ -8,6 +8,7 @@ type Schemas = components["schemas"];
 
 export type CreateWorkoutRequest = Schemas["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.CreateWorkoutRequest"];
 export type UpdateWorkoutRequest = Schemas["FitnessLink.Module.Core.Application.Features.Workouts.DTOs.UpdateWorkoutRequest"];
+export type PublishContentRequest = Schemas["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
 
 export const keys = {
   all: ["core", "workouts"] as const,
@@ -17,7 +18,7 @@ export const keys = {
   detail: (id: string) => [...keys.details(), id] as const,
 } as const;
 
-export async function listWorkouts(params?: { "page"?: number; "pageSize"?: number }): Promise<unknown> {
+export async function listWorkouts(params?: { "page"?: number; "pageSize"?: number; "source"?: string; "contributorId"?: string }): Promise<unknown> {
   const qs = buildQuery(params);
   const url = qs ? `/core/api/v1/workouts?${qs}` : `/core/api/v1/workouts`;
   return platformJson(url);
@@ -53,6 +54,14 @@ export async function listWorkoutTasks(id: string): Promise<unknown> {
 
 export async function getWorkoutTask(id: string, taskId: string): Promise<unknown> {
   return platformJson(`/core/api/v1/workouts/${encodeURIComponent(id)}/tasks/${encodeURIComponent(taskId)}`);
+}
+
+export async function publishWorkout(id: string, body: PublishContentRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/workouts/${encodeURIComponent(id)}/publish`, { method: "POST", body: JSON.stringify(body) });
+}
+
+export async function unpublishWorkout(id: string, body: PublishContentRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/workouts/${encodeURIComponent(id)}/unpublish`, { method: "POST", body: JSON.stringify(body) });
 }
 
 function buildQuery(params: Record<string, unknown> | undefined): string {

@@ -14,12 +14,15 @@ export function Sidebar() {
       className="hidden lg:flex flex-col w-[240px] shrink-0 bg-surface border-r border-border-soft h-dvh sticky top-0"
       aria-label="Primary"
     >
-      <div className="flex items-center gap-2 px-5 h-16 border-b border-border-soft">
-        <Image src="/images/flkettlebell.svg" alt="" width={28} height={28} />
-        <span className="tracking-widest">
-          <span className="font-bold text-text-primary">FITNESS</span>
-          <span className="font-light text-text-primary ml-0.5">LINK</span>
-        </span>
+      <div className="flex items-center px-5 h-16 border-b border-border-soft">
+        <Image
+          src="/images/logo.png"
+          alt="FitnessLink"
+          width={780}
+          height={156}
+          priority
+          className="h-8 w-auto"
+        />
       </div>
       <nav className="flex-1 overflow-y-auto py-4 px-3">
         <ul className="space-y-1">

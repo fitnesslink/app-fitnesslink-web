@@ -14,19 +14,17 @@ import { Chip } from "@/components/ui/Chip";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { EmptyState } from "@/components/ui/EmptyState";
 import type { MovementSummary } from "@/lib/catalog/types";
-import { PLACEHOLDER_MOVEMENTS } from "@/lib/catalog/placeholder";
 
 const PAGE_SIZE = 24;
 
 async function fetchMovements(): Promise<MovementSummary[]> {
   try {
     const res = (await movements.listMovements()) as
-      | { items?: MovementSummary[] }
+      | { data?: MovementSummary[]; items?: MovementSummary[] }
       | MovementSummary[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : PLACEHOLDER_MOVEMENTS;
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return PLACEHOLDER_MOVEMENTS;
+    return [];
   }
 }
 

@@ -10,17 +10,16 @@ import { AppShell } from "@/components/layout/AppShell";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/EmptyState";
-import { placeholderGrocery, type GroceryItem } from "@/lib/nutrition/types";
+import type { GroceryItem } from "@/lib/nutrition/types";
 
 async function fetchGrocery(): Promise<GroceryItem[]> {
   try {
     const res = (await grocery.getMyGrocery()) as
-      | { items?: GroceryItem[] }
+      | { data?: GroceryItem[]; items?: GroceryItem[] }
       | GroceryItem[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : placeholderGrocery();
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return placeholderGrocery();
+    return [];
   }
 }
 

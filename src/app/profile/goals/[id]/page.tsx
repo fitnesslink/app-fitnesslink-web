@@ -10,15 +10,13 @@ import { AppShell } from "@/components/layout/AppShell";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Skeleton } from "@/components/ui/Skeleton";
-import { placeholderGoals, type Goal } from "@/lib/profile/types";
+import type { Goal } from "@/lib/profile/types";
 
-async function fetchGoal(id: string): Promise<Goal> {
+async function fetchGoal(id: string): Promise<Goal | null> {
   try {
-    const res = (await goalsApi.getGoal(id)) as Goal | null;
-    if (!res) return placeholderGoals().find((g) => g.id === id) ?? placeholderGoals()[0];
-    return res;
+    return ((await goalsApi.getGoal(id)) as Goal | null) ?? null;
   } catch {
-    return placeholderGoals().find((g) => g.id === id) ?? placeholderGoals()[0];
+    return null;
   }
 }
 
@@ -52,11 +50,13 @@ export default function GoalDetailPage({ params }: { params: Promise<{ id: strin
           Goals
         </Link>
 
-        {isLoading || !data ? (
+        {isLoading ? (
           <>
             <Skeleton className="h-40" />
             <Skeleton className="h-60" />
           </>
+        ) : !data ? (
+          <p className="text-sm text-text-secondary">Goal not found.</p>
         ) : (
           <>
             <Card>

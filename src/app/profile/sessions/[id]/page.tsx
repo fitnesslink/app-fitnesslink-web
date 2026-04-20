@@ -10,19 +10,15 @@ import { AppShell } from "@/components/layout/AppShell";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { StatCard } from "@/components/ui/StatCard";
 import { Skeleton } from "@/components/ui/Skeleton";
-import { placeholderSessionDetail, type SessionDetail } from "@/lib/profile/types";
+import type { SessionDetail } from "@/lib/profile/types";
 
-async function fetchSession(id: string): Promise<SessionDetail> {
+async function fetchSession(id: string): Promise<SessionDetail | null> {
   try {
     const res = (await sessionsApi.getSession(id)) as SessionDetail | null;
-    if (!res) return placeholderSessionDetail(id);
-    return {
-      ...placeholderSessionDetail(id),
-      ...res,
-      exercises: res.exercises ?? placeholderSessionDetail(id).exercises,
-    };
+    if (!res) return null;
+    return { ...res, exercises: res.exercises ?? [] };
   } catch {
-    return placeholderSessionDetail(id);
+    return null;
   }
 }
 
@@ -56,11 +52,13 @@ export default function SessionDetailPage({ params }: { params: Promise<{ id: st
           Workout report
         </Link>
 
-        {isLoading || !data ? (
+        {isLoading ? (
           <>
             <Skeleton className="h-40" />
             <Skeleton className="h-60" />
           </>
+        ) : !data ? (
+          <p className="text-sm text-text-secondary">Session not found.</p>
         ) : (
           <>
             <Card>

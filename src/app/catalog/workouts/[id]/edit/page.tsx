@@ -10,19 +10,14 @@ import { AppShell } from "@/components/layout/AppShell";
 import { WorkoutEditor } from "@/components/catalog/WorkoutEditor";
 import { Skeleton } from "@/components/ui/Skeleton";
 import type { WorkoutDetail } from "@/lib/catalog/types";
-import { placeholderWorkoutDetail } from "@/lib/catalog/placeholder";
 
-async function fetchWorkoutDetail(id: string): Promise<WorkoutDetail> {
+async function fetchWorkoutDetail(id: string): Promise<WorkoutDetail | null> {
   try {
     const res = (await workouts.getWorkout(id)) as WorkoutDetail | null;
-    if (!res) return placeholderWorkoutDetail(id);
-    return {
-      ...placeholderWorkoutDetail(id),
-      ...res,
-      phases: res.phases ?? placeholderWorkoutDetail(id).phases,
-    };
+    if (!res) return null;
+    return { ...res, phases: res.phases ?? [] };
   } catch {
-    return placeholderWorkoutDetail(id);
+    return null;
   }
 }
 
@@ -55,7 +50,13 @@ export default function EditWorkoutPage({ params }: { params: Promise<{ id: stri
           </svg>
           Back to workout
         </Link>
-        {isLoading || !data ? <Skeleton className="h-96" /> : <WorkoutEditor id={id} initial={data} />}
+        {isLoading ? (
+          <Skeleton className="h-96" />
+        ) : !data ? (
+          <p className="text-sm text-text-secondary">Workout not found.</p>
+        ) : (
+          <WorkoutEditor id={id} initial={data} />
+        )}
       </div>
     </AppShell>
   );

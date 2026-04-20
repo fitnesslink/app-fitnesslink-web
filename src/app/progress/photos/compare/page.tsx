@@ -11,17 +11,16 @@ import { AppShell } from "@/components/layout/AppShell";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { Slider } from "@/components/ui/Slider";
 import { EmptyState } from "@/components/ui/EmptyState";
-import { placeholderPhotos, type ProgressPhoto } from "@/lib/progress/types";
+import type { ProgressPhoto } from "@/lib/progress/types";
 
 async function fetchPhotos(): Promise<ProgressPhoto[]> {
   try {
     const res = (await progressPhotos.getMyProgressPhoto()) as
-      | { items?: ProgressPhoto[] }
+      | { data?: ProgressPhoto[]; items?: ProgressPhoto[] }
       | ProgressPhoto[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : placeholderPhotos();
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return placeholderPhotos();
+    return [];
   }
 }
 

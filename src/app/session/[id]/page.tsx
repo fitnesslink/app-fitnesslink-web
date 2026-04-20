@@ -8,19 +8,14 @@ import { workouts } from "@/lib/api/core";
 import { InteractiveSession } from "@/components/session/InteractiveSession";
 import { PlaylistSession } from "@/components/session/PlaylistSession";
 import type { WorkoutDetail } from "@/lib/catalog/types";
-import { placeholderWorkoutDetail } from "@/lib/catalog/placeholder";
 
-async function fetchWorkoutDetail(id: string): Promise<WorkoutDetail> {
+async function fetchWorkoutDetail(id: string): Promise<WorkoutDetail | null> {
   try {
     const res = (await workouts.getWorkout(id)) as WorkoutDetail | null;
-    if (!res) return placeholderWorkoutDetail(id);
-    return {
-      ...placeholderWorkoutDetail(id),
-      ...res,
-      phases: res.phases ?? placeholderWorkoutDetail(id).phases,
-    };
+    if (!res) return null;
+    return { ...res, phases: res.phases ?? [] };
   } catch {
-    return placeholderWorkoutDetail(id);
+    return null;
   }
 }
 
@@ -36,17 +31,24 @@ export default function SessionPage({ params }: { params: Promise<{ id: string }
     if (!authLoading && !user) router.replace("/login");
   }, [authLoading, user, router]);
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: workouts.keys.detail(id),
     queryFn: () => fetchWorkoutDetail(id),
     enabled: !!id,
   });
 
   if (authLoading || !user) return null;
-  if (!data) {
+  if (isLoading) {
     return (
       <div className="h-dvh bg-black text-white flex items-center justify-center">
         Loading…
+      </div>
+    );
+  }
+  if (!data) {
+    return (
+      <div className="h-dvh bg-black text-white flex items-center justify-center">
+        Workout not found.
       </div>
     );
   }

@@ -23,6 +23,22 @@ export async function listReportsNutrition(params?: { "since"?: string; "to"?: s
   return platformJson(url);
 }
 
+export async function listReportsAdminOverview(): Promise<unknown> {
+  return platformJson(`/core/api/v1/reports/admin-overview`);
+}
+
+export async function listReportCustomerAdherence(id: string, params?: { "since"?: string; "until"?: string }): Promise<unknown> {
+  const qs = buildQuery(params);
+  const url = qs ? `/core/api/v1/reports/customer/${encodeURIComponent(id)}/adherence?${qs}` : `/core/api/v1/reports/customer/${encodeURIComponent(id)}/adherence`;
+  return platformJson(url);
+}
+
+export async function listReportContentEngagement(id: string, params?: { "type"?: string }): Promise<unknown> {
+  const qs = buildQuery(params);
+  const url = qs ? `/core/api/v1/reports/content/${encodeURIComponent(id)}/engagement?${qs}` : `/core/api/v1/reports/content/${encodeURIComponent(id)}/engagement`;
+  return platformJson(url);
+}
+
 function buildQuery(params: Record<string, unknown> | undefined): string {
   if (!params) return "";
   const q = new URLSearchParams();

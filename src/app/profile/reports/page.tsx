@@ -3,14 +3,27 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "@/lib/state/auth";
+import { sessions as sessionsApi } from "@/lib/api/core";
 import { AppShell } from "@/components/layout/AppShell";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { StatCard } from "@/components/ui/StatCard";
 import { Tabs, TabList, Tab, TabPanel } from "@/components/ui/Tabs";
 import { BarChart } from "@/components/ui/charts/BarChart";
 import { LineChart } from "@/components/ui/charts/LineChart";
-import { placeholderSessions, type ReportRange, type SessionSummary } from "@/lib/profile/types";
+import type { ReportRange, SessionSummary } from "@/lib/profile/types";
+
+async function fetchSessions(): Promise<SessionSummary[]> {
+  try {
+    const res = (await sessionsApi.getMySession()) as
+      | { data?: SessionSummary[]; items?: SessionSummary[] }
+      | SessionSummary[];
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
+  } catch {
+    return [];
+  }
+}
 
 const RANGES: Array<{ value: ReportRange; label: string; days: number | null }> = [
   { value: "7d", label: "7 days", days: 7 },
@@ -28,7 +41,10 @@ export default function WorkoutReportPage() {
     if (!authLoading && !user) router.replace("/login");
   }, [authLoading, user, router]);
 
-  const allSessions = useMemo(() => placeholderSessions(), []);
+  const { data: allSessions = [] } = useQuery({
+    queryKey: sessionsApi.keys.list(),
+    queryFn: fetchSessions,
+  });
   const sessions = useMemo(() => {
     const days = RANGES.find((r) => r.value === range)?.days;
     if (!days) return allSessions;

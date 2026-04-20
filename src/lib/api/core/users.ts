@@ -6,8 +6,10 @@ import type { components } from "@/types/api";
 
 type Schemas = components["schemas"];
 
-export type UpdateUserRequest = Schemas["FitnessLink.Module.Core.Application.Features.Users.DTOs.UpdateUserRequest"];
 export type CreateUserRequest = Schemas["FitnessLink.Module.Core.Application.Features.Users.DTOs.CreateUserRequest"];
+export type InviteStaffUserRequest = Schemas["FitnessLink.Module.Core.Application.Features.Users.DTOs.InviteStaffUserRequest"];
+export type UpdateUserRequest = Schemas["FitnessLink.Module.Core.Application.Features.Users.DTOs.UpdateUserRequest"];
+export type AssignRoleRequest = Schemas["FitnessLink.Module.Core.Application.Features.Roles.DTOs.AssignRoleRequest"];
 export type UpdatePreferenceRequest = Schemas["FitnessLink.Module.Core.Application.Features.Users.DTOs.UpdatePreferenceRequest"];
 
 export const keys = {
@@ -22,6 +24,20 @@ export async function getMyUser(): Promise<unknown> {
   return platformJson(`/core/api/v1/users/me`);
 }
 
+export async function listUsers(params?: { "page"?: number; "pageSize"?: number; "isActive"?: boolean; "role"?: string; "search"?: string }): Promise<unknown> {
+  const qs = buildQuery(params);
+  const url = qs ? `/core/api/v1/users?${qs}` : `/core/api/v1/users`;
+  return platformJson(url);
+}
+
+export async function createUser(body: CreateUserRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/users`, { method: "POST", body: JSON.stringify(body) });
+}
+
+export async function inviteUsers(body: InviteStaffUserRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/users/invite`, { method: "POST", body: JSON.stringify(body) });
+}
+
 export async function getUser(id: string): Promise<unknown> {
   return platformJson(`/core/api/v1/users/${encodeURIComponent(id)}`);
 }
@@ -30,8 +46,24 @@ export async function updateUser(id: string, body: UpdateUserRequest): Promise<u
   return platformJson(`/core/api/v1/users/${encodeURIComponent(id)}`, { method: "PUT", body: JSON.stringify(body) });
 }
 
-export async function createUser(body: CreateUserRequest): Promise<unknown> {
-  return platformJson(`/core/api/v1/users`, { method: "POST", body: JSON.stringify(body) });
+export async function listUserPrograms(id: string, params?: { "page"?: number; "pageSize"?: number }): Promise<unknown> {
+  const qs = buildQuery(params);
+  const url = qs ? `/core/api/v1/users/${encodeURIComponent(id)}/programs?${qs}` : `/core/api/v1/users/${encodeURIComponent(id)}/programs`;
+  return platformJson(url);
+}
+
+export async function listUserSessions(id: string, params?: { "page"?: number; "pageSize"?: number }): Promise<unknown> {
+  const qs = buildQuery(params);
+  const url = qs ? `/core/api/v1/users/${encodeURIComponent(id)}/sessions?${qs}` : `/core/api/v1/users/${encodeURIComponent(id)}/sessions`;
+  return platformJson(url);
+}
+
+export async function deactivateUser(id: string): Promise<unknown> {
+  return platformJson(`/core/api/v1/users/${encodeURIComponent(id)}/deactivate`, { method: "PUT" });
+}
+
+export async function roleUser(id: string, body: AssignRoleRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/users/${encodeURIComponent(id)}/role`, { method: "POST", body: JSON.stringify(body) });
 }
 
 export async function listUserPreferences(id: string): Promise<unknown> {
@@ -44,4 +76,13 @@ export async function preferencesUser(id: string, body: UpdatePreferenceRequest)
 
 export async function meProfilePhotoUsers(): Promise<unknown> {
   return platformJson(`/core/api/v1/users/me/profile-photo`, { method: "POST" });
+}
+
+function buildQuery(params: Record<string, unknown> | undefined): string {
+  if (!params) return "";
+  const q = new URLSearchParams();
+  for (const [k, v] of Object.entries(params)) {
+    if (v !== undefined && v !== null) q.set(k, String(v));
+  }
+  return q.toString();
 }

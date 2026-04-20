@@ -13,9 +13,9 @@ interface DesktopShellProps {
 
 export function DesktopShell({ children, subtitle, rightRail }: DesktopShellProps) {
   return (
-    <div className="min-h-dvh bg-background flex">
+    <div className="h-dvh bg-background flex overflow-hidden">
       <Sidebar />
-      <div className="flex-1 min-w-0 flex flex-col">
+      <div className="flex-1 min-w-0 min-h-0 flex flex-col">
         <TopBar subtitle={subtitle} />
         <div className="flex-1 flex min-h-0">
           <main className="flex-1 min-w-0 overflow-y-auto p-6">{children}</main>

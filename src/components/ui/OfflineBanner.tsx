@@ -3,11 +3,16 @@
 import { useEffect, useState } from "react";
 
 export function OfflineBanner() {
-  const [online, setOnline] = useState(
-    typeof navigator === "undefined" ? true : navigator.onLine
-  );
+  // Render nothing on SSR + first client render; the effect below flips to
+  // the real online state after mount. This avoids a hydration mismatch if
+  // SSR ("typeof navigator === 'undefined' ? true : …") disagrees with the
+  // client's actual `navigator.onLine` value.
+  const [online, setOnline] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    setOnline(navigator.onLine);
     const up = () => setOnline(true);
     const down = () => setOnline(false);
     window.addEventListener("online", up);
@@ -18,7 +23,7 @@ export function OfflineBanner() {
     };
   }, []);
 
-  if (online) return null;
+  if (!mounted || online) return null;
   return (
     <div
       role="status"

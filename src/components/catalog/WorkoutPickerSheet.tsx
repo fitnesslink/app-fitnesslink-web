@@ -7,7 +7,6 @@ import { Sheet } from "@/components/ui/Sheet";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { EmptyState } from "@/components/ui/EmptyState";
 import type { WorkoutSummary } from "@/lib/catalog/types";
-import { PLACEHOLDER_WORKOUTS } from "@/lib/catalog/placeholder";
 
 interface WorkoutPickerSheetProps {
   open: boolean;
@@ -21,12 +20,11 @@ interface WorkoutPickerSheetProps {
 async function fetchWorkouts(): Promise<WorkoutSummary[]> {
   try {
     const res = (await workouts.listWorkouts()) as
-      | { items?: WorkoutSummary[] }
+      | { data?: WorkoutSummary[]; items?: WorkoutSummary[] }
       | WorkoutSummary[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : PLACEHOLDER_WORKOUTS;
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return PLACEHOLDER_WORKOUTS;
+    return [];
   }
 }
 

@@ -16,7 +16,6 @@ import { LineChart } from "@/components/ui/charts/LineChart";
 import { EmptyState } from "@/components/ui/EmptyState";
 import {
   kgToUnit,
-  placeholderWeight,
   unitToKg,
   type WeightEntry,
   type WeightUnit,
@@ -24,11 +23,12 @@ import {
 
 async function fetchWeight(): Promise<WeightEntry[]> {
   try {
-    const res = (await weightApi.getMyWeight()) as { items?: WeightEntry[] } | WeightEntry[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : placeholderWeight();
+    const res = (await weightApi.getMyWeight()) as
+      | { data?: WeightEntry[]; items?: WeightEntry[] }
+      | WeightEntry[];
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return placeholderWeight();
+    return [];
   }
 }
 

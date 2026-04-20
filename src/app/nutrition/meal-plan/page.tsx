@@ -10,7 +10,6 @@ import { MealSlotSheet } from "@/components/nutrition/MealSlotSheet";
 import {
   MEAL_LABELS,
   MEAL_TYPES,
-  placeholderMealSlots,
   type MealSlot,
 } from "@/lib/nutrition/types";
 
@@ -26,10 +25,6 @@ export default function MealPlanPage() {
   useEffect(() => {
     if (!isLoading && !user) router.replace("/login");
   }, [isLoading, user, router]);
-
-  useEffect(() => {
-    setSlots(placeholderMealSlots());
-  }, []);
 
   const key = (day: number, meal: string) => `${day}-${meal}`;
   const byKey = new Map(slots.map((s) => [key(s.day, s.mealType), s]));

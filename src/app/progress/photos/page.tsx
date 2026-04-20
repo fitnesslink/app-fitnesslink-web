@@ -14,23 +14,18 @@ import { Chip } from "@/components/ui/Chip";
 import { Sheet } from "@/components/ui/Sheet";
 import { DatePicker } from "@/components/ui/DatePicker";
 import { PhotosEmpty } from "@/components/ui/empty-states";
-import {
-  placeholderPhotos,
-  type PhotoAngle,
-  type ProgressPhoto,
-} from "@/lib/progress/types";
+import type { PhotoAngle, ProgressPhoto } from "@/lib/progress/types";
 
 const ANGLES: PhotoAngle[] = ["front", "side", "back"];
 
 async function fetchPhotos(): Promise<ProgressPhoto[]> {
   try {
     const res = (await progressPhotos.getMyProgressPhoto()) as
-      | { items?: ProgressPhoto[] }
+      | { data?: ProgressPhoto[]; items?: ProgressPhoto[] }
       | ProgressPhoto[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : placeholderPhotos();
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return placeholderPhotos();
+    return [];
   }
 }
 

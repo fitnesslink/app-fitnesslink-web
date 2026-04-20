@@ -17,17 +17,16 @@ import { MonthGrid } from "@/components/calendar/MonthGrid";
 import { ScheduledList } from "@/components/calendar/ScheduledList";
 import { ScheduledWorkoutSheet } from "@/components/calendar/ScheduledWorkoutSheet";
 import { WeekView } from "@/components/calendar/WeekView";
-import { placeholderEntries, type ScheduledWorkout } from "@/lib/calendar/types";
+import type { ScheduledWorkout } from "@/lib/calendar/types";
 
 async function fetchEntries(): Promise<ScheduledWorkout[]> {
   try {
     const res = (await calendar.getMyCalendar()) as
-      | { items?: ScheduledWorkout[] }
+      | { data?: ScheduledWorkout[]; items?: ScheduledWorkout[] }
       | ScheduledWorkout[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : placeholderEntries();
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return placeholderEntries();
+    return [];
   }
 }
 

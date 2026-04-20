@@ -17,7 +17,6 @@ import {
   BODY_PARTS,
   BODY_PART_LABELS,
   cmToUnit,
-  placeholderMeasurements,
   unitToCm,
   type BodyPart,
   type LengthUnit,
@@ -27,12 +26,11 @@ import {
 async function fetchMeasurements(): Promise<MeasurementEntry[]> {
   try {
     const res = (await measurementsApi.getMyMeasurement()) as
-      | { items?: MeasurementEntry[] }
+      | { data?: MeasurementEntry[]; items?: MeasurementEntry[] }
       | MeasurementEntry[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : placeholderMeasurements();
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return placeholderMeasurements();
+    return [];
   }
 }
 

@@ -8,6 +8,7 @@ type Schemas = components["schemas"];
 
 export type CreateMovementRequest = Schemas["FitnessLink.Module.Core.Application.Features.Movements.DTOs.CreateMovementRequest"];
 export type UpdateMovementRequest = Schemas["FitnessLink.Module.Core.Application.Features.Movements.DTOs.UpdateMovementRequest"];
+export type PublishContentRequest = Schemas["FitnessLink.Module.Core.Application.Features.ContentPublishing.DTOs.PublishContentRequest"];
 
 export const keys = {
   all: ["core", "movements"] as const,
@@ -17,7 +18,7 @@ export const keys = {
   detail: (id: string) => [...keys.details(), id] as const,
 } as const;
 
-export async function listMovements(params?: { "page"?: number; "pageSize"?: number }): Promise<unknown> {
+export async function listMovements(params?: { "page"?: number; "pageSize"?: number; "source"?: string; "contributorId"?: string }): Promise<unknown> {
   const qs = buildQuery(params);
   const url = qs ? `/core/api/v1/movements?${qs}` : `/core/api/v1/movements`;
   return platformJson(url);
@@ -41,6 +42,14 @@ export async function updateMovement(id: string, body: UpdateMovementRequest): P
 
 export async function deleteMovement(id: string): Promise<unknown> {
   return platformJson(`/core/api/v1/movements/${encodeURIComponent(id)}`, { method: "DELETE" });
+}
+
+export async function publishMovement(id: string, body: PublishContentRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/movements/${encodeURIComponent(id)}/publish`, { method: "POST", body: JSON.stringify(body) });
+}
+
+export async function unpublishMovement(id: string, body: PublishContentRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/movements/${encodeURIComponent(id)}/unpublish`, { method: "POST", body: JSON.stringify(body) });
 }
 
 function buildQuery(params: Record<string, unknown> | undefined): string {

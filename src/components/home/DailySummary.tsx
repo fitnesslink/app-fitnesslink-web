@@ -16,18 +16,40 @@ interface GoalCard {
   targetValue: number;
 }
 
-// Read the same query keys as the individual widgets so React Query
-// deduplicates. Values compute to 0 if the keys haven't been primed yet.
+// Share query keys with `<TodayHabits>` / `<GoalProgressRow>` so React Query
+// dedupes into one fetch per window — whichever consumer mounts first wins,
+// the rest subscribe to the same cache entry. Supplying a queryFn here (even
+// though it may not fire) is required by TanStack Query v5.
+async function fetchHabitSummary(): Promise<HabitListItem[]> {
+  try {
+    const res = (await habits.getMyHabit()) as
+      | { data?: HabitListItem[]; items?: HabitListItem[] }
+      | HabitListItem[];
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
+  } catch {
+    return [];
+  }
+}
+
+async function fetchGoalSummary(): Promise<GoalCard[]> {
+  try {
+    const res = (await goals.listGoals()) as
+      | { data?: GoalCard[]; items?: GoalCard[] }
+      | GoalCard[];
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
+  } catch {
+    return [];
+  }
+}
+
 export function DailySummary() {
   const { data: habitList = [] } = useQuery<HabitListItem[]>({
     queryKey: habits.keys.list(),
-    enabled: false, // don't initiate; piggyback on TodayHabits' fetch
-    initialData: [],
+    queryFn: fetchHabitSummary,
   });
   const { data: goalList = [] } = useQuery<GoalCard[]>({
     queryKey: goals.keys.list(),
-    enabled: false,
-    initialData: [],
+    queryFn: fetchGoalSummary,
   });
 
   const habitTotal = habitList.length;

@@ -17,19 +17,14 @@ interface HabitListItem {
   doneToday: boolean;
 }
 
-const PLACEHOLDER: HabitListItem[] = [
-  { id: "p1", title: "Morning stretch", streakDays: 7, doneToday: true },
-  { id: "p2", title: "Drink water", streakDays: 12, doneToday: false },
-  { id: "p3", title: "10k steps", streakDays: 3, doneToday: false },
-];
-
 async function fetchTodayHabits(): Promise<HabitListItem[]> {
   try {
-    const res = (await habits.getMyHabit()) as { items?: HabitListItem[] } | HabitListItem[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : PLACEHOLDER;
+    const res = (await habits.getMyHabit()) as
+      | { data?: HabitListItem[]; items?: HabitListItem[] }
+      | HabitListItem[];
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return PLACEHOLDER;
+    return [];
   }
 }
 

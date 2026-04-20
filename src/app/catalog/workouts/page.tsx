@@ -14,7 +14,6 @@ import { WorkoutsEmpty } from "@/components/ui/empty-states";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import type { WorkoutSummary } from "@/lib/catalog/types";
-import { PLACEHOLDER_WORKOUTS } from "@/lib/catalog/placeholder";
 
 const PAGE_SIZE = 12;
 
@@ -27,11 +26,12 @@ const SORT_OPTIONS = [
 
 async function fetchWorkouts(): Promise<WorkoutSummary[]> {
   try {
-    const res = (await workouts.listWorkouts()) as { items?: WorkoutSummary[] } | WorkoutSummary[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : PLACEHOLDER_WORKOUTS;
+    const res = (await workouts.listWorkouts()) as
+      | { data?: WorkoutSummary[]; items?: WorkoutSummary[] }
+      | WorkoutSummary[];
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return PLACEHOLDER_WORKOUTS;
+    return [];
   }
 }
 

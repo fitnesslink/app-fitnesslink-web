@@ -8,17 +8,16 @@ import { useAuth } from "@/lib/state/auth";
 import { achievements as achievementsApi } from "@/lib/api/core";
 import { AppShell } from "@/components/layout/AppShell";
 import { Card, CardContent } from "@/components/ui/Card";
-import { placeholderAchievements, type Achievement } from "@/lib/profile/types";
+import type { Achievement } from "@/lib/profile/types";
 
 async function fetchAchievements(): Promise<Achievement[]> {
   try {
     const res = (await achievementsApi.getMyAchievement()) as
-      | { items?: Achievement[] }
+      | { data?: Achievement[]; items?: Achievement[] }
       | Achievement[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : placeholderAchievements();
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return placeholderAchievements();
+    return [];
   }
 }
 

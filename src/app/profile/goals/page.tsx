@@ -11,15 +11,16 @@ import { Card, CardContent } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { GoalsEmpty } from "@/components/ui/empty-states";
-import { placeholderGoals, type Goal } from "@/lib/profile/types";
+import type { Goal } from "@/lib/profile/types";
 
 async function fetchGoals(): Promise<Goal[]> {
   try {
-    const res = (await goalsApi.listGoals()) as { items?: Goal[] } | Goal[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    return items.length > 0 ? items : placeholderGoals();
+    const res = (await goalsApi.listGoals()) as
+      | { data?: Goal[]; items?: Goal[] }
+      | Goal[];
+    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
   } catch {
-    return placeholderGoals();
+    return [];
   }
 }
 

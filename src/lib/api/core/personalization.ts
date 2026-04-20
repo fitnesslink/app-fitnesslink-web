@@ -2,6 +2,11 @@
 // Regenerate with `npm run gen:api:clients` after the OpenAPI snapshot changes.
 
 import { platformJson } from "../client";
+import type { components } from "@/types/api";
+
+type Schemas = components["schemas"];
+
+export type SimulateMatchRequest = Schemas["FitnessLink.Module.Core.Application.Features.Personalization.DTOs.SimulateMatchRequest"];
 
 export const keys = {
   all: ["core", "personalization"] as const,
@@ -25,4 +30,8 @@ export async function mePersonalization(): Promise<unknown> {
 
 export async function getPersonalizationUser(id: string): Promise<unknown> {
   return platformJson(`/core/api/v1/personalization/user/${encodeURIComponent(id)}`);
+}
+
+export async function simulatePersonalization(body: SimulateMatchRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/personalization/simulate`, { method: "POST", body: JSON.stringify(body) });
 }

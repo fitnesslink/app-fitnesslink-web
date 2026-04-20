@@ -6,25 +6,23 @@ import { Sheet } from "@/components/ui/Sheet";
 import { Chip } from "@/components/ui/Chip";
 import { Skeleton } from "@/components/ui/Skeleton";
 import type { MovementDetail } from "@/lib/catalog/types";
-import { placeholderMovementDetail } from "@/lib/catalog/placeholder";
 
 interface MovementPreviewSheetProps {
   movementId: string | null;
   onClose: () => void;
 }
 
-async function fetchMovement(id: string): Promise<MovementDetail> {
+async function fetchMovement(id: string): Promise<MovementDetail | null> {
   try {
     const res = (await movements.getMovement(id)) as MovementDetail | null;
-    if (!res) return placeholderMovementDetail(id);
+    if (!res) return null;
     return {
-      ...placeholderMovementDetail(id),
       ...res,
       anatomyTags: res.anatomyTags ?? [],
       equipmentTags: res.equipmentTags ?? [],
     };
   } catch {
-    return placeholderMovementDetail(id);
+    return null;
   }
 }
 
@@ -61,13 +59,15 @@ export function MovementPreviewSheet({ movementId, onClose }: MovementPreviewShe
       variant="side"
       width={420}
     >
-      {isLoading || !data ? (
+      {isLoading ? (
         <div className="space-y-4">
           <Skeleton className="aspect-video w-full" />
           <Skeleton variant="text" className="w-3/4 h-5" />
           <Skeleton variant="text" className="w-full" />
           <Skeleton variant="text" className="w-full" />
         </div>
+      ) : !data ? (
+        <p className="text-sm text-text-secondary">Movement not found.</p>
       ) : (
         <div className="space-y-5">
           <div className="aspect-video rounded-lg overflow-hidden bg-background flex items-center justify-center">

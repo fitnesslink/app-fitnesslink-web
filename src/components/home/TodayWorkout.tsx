@@ -19,27 +19,16 @@ interface ScheduledWorkout {
   thumbnailUrl?: string;
 }
 
-const PLACEHOLDER: ScheduledWorkout = {
-  id: "p1",
-  workoutId: "w1",
-  name: "Full-body strength",
-  estimatedMinutes: 45,
-  exerciseCount: 8,
-};
-
 async function fetchScheduled(date: Date): Promise<ScheduledWorkout | null> {
   try {
     const res = (await calendar.getMyCalendar()) as
-      | { items?: ScheduledWorkout[] }
+      | { data?: ScheduledWorkout[]; items?: ScheduledWorkout[] }
       | ScheduledWorkout[];
-    const items = Array.isArray(res) ? res : res.items ?? [];
-    // TODO(P11): filter items by `date`; API today doesn't expose the field
-    // shape reliably, so we preview the first scheduled workout or the
-    // placeholder.
+    const items = Array.isArray(res) ? res : res.data ?? res.items ?? [];
     void date;
-    return items[0] ?? PLACEHOLDER;
+    return items[0] ?? null;
   } catch {
-    return PLACEHOLDER;
+    return null;
   }
 }
 

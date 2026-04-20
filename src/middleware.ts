@@ -2,7 +2,10 @@ import { NextResponse, type NextRequest } from "next/server";
 
 const SESSION_COOKIE_NAME = "fl_session";
 
-// Publicly reachable without a session.
+// Publicly reachable without a session. `/` is here so the server-side
+// redirect in src/app/page.tsx runs (it sends everyone to /login); without
+// it the middleware would pre-empt with its own /login bounce and race the
+// render.
 const PUBLIC_PATHS = new Set<string>([
   "/",
   "/login",
@@ -10,8 +13,9 @@ const PUBLIC_PATHS = new Set<string>([
   "/forgot-password",
 ]);
 
-// When a valid session exists, these routes should bounce to /home.
-const AUTH_ONLY_PATHS = new Set<string>(["/login", "/signup"]);
+// When a valid session exists, these routes should bounce to /home — skips
+// the throwaway `/` splash + the auth routes for a signed-in user.
+const AUTH_ONLY_PATHS = new Set<string>(["/", "/login", "/signup"]);
 
 // Base64-url decode with manual padding — atob is Edge-safe.
 function base64UrlDecode(str: string): string {

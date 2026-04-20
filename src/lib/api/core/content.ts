@@ -7,6 +7,9 @@ import type { components } from "@/types/api";
 type Schemas = components["schemas"];
 
 export type ShareContentRequest = Schemas["FitnessLink.Module.Core.Application.Features.Content.DTOs.ShareContentRequest"];
+export type BulkTagContentRequest = Schemas["FitnessLink.Module.Core.Application.Features.Tags.DTOs.BulkTagContentRequest"];
+export type AttachContentTagsRequest = Schemas["FitnessLink.Module.Core.Application.Features.Tags.DTOs.AttachContentTagsRequest"];
+export type CreateContentVersionRequest = Schemas["FitnessLink.Module.Core.Application.Features.ContentVersions.DTOs.CreateContentVersionRequest"];
 
 export const keys = {
   all: ["core", "content"] as const,
@@ -34,4 +37,45 @@ export async function listContentShared(): Promise<unknown> {
 
 export async function uploadContent(): Promise<unknown> {
   return platformJson(`/core/api/v1/content/upload`, { method: "POST" });
+}
+
+export async function bulkTagContent(body: BulkTagContentRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/content/bulk-tag`, { method: "POST", body: JSON.stringify(body) });
+}
+
+export async function tagsContent(type: string, id: string, body: AttachContentTagsRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/content/${encodeURIComponent(type)}/${encodeURIComponent(id)}/tags`, { method: "POST", body: JSON.stringify(body) });
+}
+
+export async function listContentVersions(type: string, id: string, params?: { "page"?: number; "pageSize"?: number }): Promise<unknown> {
+  const qs = buildQuery(params);
+  const url = qs ? `/core/api/v1/content/${encodeURIComponent(type)}/${encodeURIComponent(id)}/versions?${qs}` : `/core/api/v1/content/${encodeURIComponent(type)}/${encodeURIComponent(id)}/versions`;
+  return platformJson(url);
+}
+
+export async function versionsContent(type: string, id: string, body: CreateContentVersionRequest): Promise<unknown> {
+  return platformJson(`/core/api/v1/content/${encodeURIComponent(type)}/${encodeURIComponent(id)}/versions`, { method: "POST", body: JSON.stringify(body) });
+}
+
+export async function listContentVersionsDiff(type: string, id: string, params?: { "from"?: number; "to"?: number }): Promise<unknown> {
+  const qs = buildQuery(params);
+  const url = qs ? `/core/api/v1/content/${encodeURIComponent(type)}/${encodeURIComponent(id)}/versions/diff?${qs}` : `/core/api/v1/content/${encodeURIComponent(type)}/${encodeURIComponent(id)}/versions/diff`;
+  return platformJson(url);
+}
+
+export async function getContentVersion(type: string, id: string, versionId: string): Promise<unknown> {
+  return platformJson(`/core/api/v1/content/${encodeURIComponent(type)}/${encodeURIComponent(id)}/versions/${encodeURIComponent(versionId)}`);
+}
+
+export async function versionsRestoreContent(type: string, id: string, versionId: string): Promise<unknown> {
+  return platformJson(`/core/api/v1/content/${encodeURIComponent(type)}/${encodeURIComponent(id)}/versions/${encodeURIComponent(versionId)}/restore`, { method: "POST" });
+}
+
+function buildQuery(params: Record<string, unknown> | undefined): string {
+  if (!params) return "";
+  const q = new URLSearchParams();
+  for (const [k, v] of Object.entries(params)) {
+    if (v !== undefined && v !== null) q.set(k, String(v));
+  }
+  return q.toString();
 }
