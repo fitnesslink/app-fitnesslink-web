@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import type { ProgramDetail } from "@/lib/catalog/types";
+import { formatDuration } from "@/lib/format";
 
 const DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
@@ -59,7 +60,7 @@ export function ProgramDetailView({ program, onDayClick, actions }: ProgramDetai
                     <>
                       {day.workout.name}
                       <span className="block text-[10px] text-text-secondary font-normal mt-0.5">
-                        {day.workout.estimatedMinutes} min
+                        {formatDuration(day.workout.estimatedMinutes)}
                       </span>
                     </>
                   ) : (

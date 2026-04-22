@@ -13,6 +13,7 @@ import { Tabs, TabList, Tab, TabPanel } from "@/components/ui/Tabs";
 import { BarChart } from "@/components/ui/charts/BarChart";
 import { LineChart } from "@/components/ui/charts/LineChart";
 import type { ReportRange, SessionSummary } from "@/lib/profile/types";
+import { formatDuration } from "@/lib/format";
 
 async function fetchSessions(): Promise<SessionSummary[]> {
   try {
@@ -163,7 +164,7 @@ export default function WorkoutReportPage() {
                                 year: "numeric",
                               })}
                               {" · "}
-                              {s.durationMinutes} min · RPE {s.rpe ?? "—"}
+                              {formatDuration(s.durationMinutes)} · RPE {s.rpe ?? "—"}
                             </p>
                           </div>
                           <svg className="w-4 h-4 text-text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

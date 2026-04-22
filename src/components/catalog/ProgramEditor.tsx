@@ -21,6 +21,7 @@ import {
   type ProgramEditorState,
 } from "@/lib/catalog/editor";
 import type { ProgramDetail } from "@/lib/catalog/types";
+import { formatDuration } from "@/lib/format";
 
 const DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const LEVEL_OPTIONS = [
@@ -168,7 +169,7 @@ export function ProgramEditor({ id, initial }: ProgramEditorProps) {
                       <span className="mt-1 flex-1 text-sm font-medium text-primary">
                         {day.workout.name}
                         <span className="block text-[10px] text-text-secondary font-normal mt-0.5">
-                          {day.workout.estimatedMinutes} min
+                          {formatDuration(day.workout.estimatedMinutes)}
                         </span>
                       </span>
                     ) : (

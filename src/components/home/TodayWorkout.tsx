@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { EmptyState } from "@/components/ui/EmptyState";
+import { formatDuration } from "@/lib/format";
 
 interface ScheduledWorkout {
   id: string;
@@ -71,7 +72,7 @@ export function TodayWorkout() {
         </p>
         <h3 className="mt-1 text-xl font-bold text-text-primary">{data.name}</h3>
         <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-text-secondary">
-          <span>{data.estimatedMinutes} min</span>
+          <span>{formatDuration(data.estimatedMinutes)}</span>
           <span>•</span>
           <span>{data.exerciseCount} exercises</span>
         </div>

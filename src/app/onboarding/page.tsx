@@ -136,10 +136,10 @@ export default function OnboardingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex justify-center">
+    <div className="h-[100dvh] bg-background flex justify-center">
       <div className="w-full max-w-[428px] px-6 flex flex-col lg:max-w-lg">
-        {/* Top bar */}
-        <div className="pt-12 lg:pt-8">
+        {/* Top bar (fixed) */}
+        <div className="pt-12 lg:pt-8 shrink-0">
           <div className="flex items-center justify-between mb-6">
             <BackButton onClick={handleBack} />
             <Logo size="sm" />
@@ -150,13 +150,13 @@ export default function OnboardingPage() {
 
         {/* Question */}
         {question && (
-          <div className="flex-1 flex flex-col pt-10">
-            <h2 className="text-2xl font-bold text-text-primary">
+          <>
+            <h2 className="text-2xl font-bold text-text-primary pt-10 shrink-0">
               {question.question}
             </h2>
 
-            {/* Options */}
-            <div className="mt-8 space-y-3 flex-1">
+            {/* Options (scrollable) */}
+            <div className="mt-8 space-y-3 flex-1 min-h-0 overflow-y-auto">
               {question.options.map((opt) => (
                 <button
                   key={opt.id}
@@ -172,8 +172,8 @@ export default function OnboardingPage() {
               ))}
             </div>
 
-            {/* Continue button */}
-            <div className="py-8 space-y-3">
+            {/* Continue button (fixed) */}
+            <div className="py-8 space-y-3 shrink-0">
               {error && (
                 <p className="text-sm text-danger bg-danger/10 rounded-lg px-3 py-2">{error}</p>
               )}
@@ -185,7 +185,7 @@ export default function OnboardingPage() {
                 Continue
               </Button>
             </div>
-          </div>
+          </>
         )}
       </div>
     </div>

@@ -10,6 +10,7 @@ import { WorkoutPickerSheet } from "@/components/catalog/WorkoutPickerSheet";
 import type { WorkoutSummary } from "@/lib/catalog/types";
 import type { ScheduledWorkout } from "@/lib/calendar/types";
 import { isoDateKey } from "@/lib/state/calendar";
+import { formatDuration } from "@/lib/format";
 
 interface ScheduledWorkoutSheetProps {
   open: boolean;
@@ -109,7 +110,7 @@ export function ScheduledWorkoutSheet({
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-text-primary truncate">{workout.name}</p>
                   {workout.estimatedMinutes > 0 && (
-                    <p className="text-xs text-text-secondary">{workout.estimatedMinutes} min</p>
+                    <p className="text-xs text-text-secondary">{formatDuration(workout.estimatedMinutes)}</p>
                   )}
                 </div>
                 {!isEdit && (

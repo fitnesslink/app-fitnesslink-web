@@ -7,6 +7,7 @@ import { Sheet } from "@/components/ui/Sheet";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { EmptyState } from "@/components/ui/EmptyState";
 import type { WorkoutSummary } from "@/lib/catalog/types";
+import { formatDuration } from "@/lib/format";
 
 interface WorkoutPickerSheetProps {
   open: boolean;
@@ -127,7 +128,7 @@ export function WorkoutPickerSheet({
                   <div className="min-w-0">
                     <p className="text-sm font-medium text-text-primary truncate">{w.name}</p>
                     <p className="text-xs text-text-secondary">
-                      {w.estimatedMinutes} min · {w.exerciseCount} exercises
+                      {formatDuration(w.estimatedMinutes)} · {w.exerciseCount} exercises
                     </p>
                   </div>
                 </button>

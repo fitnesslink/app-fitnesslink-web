@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { Popover } from "@/components/ui/Popover";
 import { ScheduleEmpty } from "@/components/ui/empty-states";
 import type { ScheduledWorkout } from "@/lib/calendar/types";
+import { formatDuration } from "@/lib/format";
 
 interface ScheduledListProps {
   date: Date;
@@ -84,7 +85,7 @@ export function ScheduledList({ date, entries, onEdit, onAdd }: ScheduledListPro
                       </p>
                       <p className="text-xs text-text-secondary mt-0.5">
                         {formatTime(entry.fromTime)}
-                        {entry.estimatedMinutes ? ` · ${entry.estimatedMinutes} min` : ""}
+                        {entry.estimatedMinutes ? ` · ${formatDuration(entry.estimatedMinutes)}` : ""}
                       </p>
                       {entry.notes && (
                         <p className="text-xs text-text-secondary mt-1 italic">{entry.notes}</p>

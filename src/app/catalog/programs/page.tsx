@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "@/lib/state/auth";
 import { programs } from "@/lib/api/core";
+import { useResolvedMedia } from "@/hooks/useResolvedMedia";
 import { AppShell } from "@/components/layout/AppShell";
 import { CatalogHeader } from "@/components/catalog/CatalogHeader";
 import { ProgramCard } from "@/components/catalog/ProgramCard";
@@ -50,8 +51,20 @@ export default function ProgramsListPage() {
     queryFn: fetchPrograms,
   });
 
+  const imageIds = useMemo(() => (data ?? []).map((p) => p.imageId), [data]);
+  const imageMap = useResolvedMedia(imageIds, "workoutimage");
+
+  const withThumbs = useMemo<ProgramSummary[]>(
+    () =>
+      (data ?? []).map((p) => ({
+        ...p,
+        thumbnailUrl: p.thumbnailUrl ?? (p.imageId ? imageMap.get(p.imageId) : undefined),
+      })),
+    [data, imageMap]
+  );
+
   const visible = useMemo(() => {
-    let items = data ?? [];
+    let items = withThumbs;
     if (search) {
       const q = search.toLowerCase();
       items = items.filter(
@@ -72,7 +85,7 @@ export default function ProgramsListPage() {
       return 0;
     });
     return copy;
-  }, [data, search, sort]);
+  }, [withThumbs, search, sort]);
 
   const paged = visible.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 

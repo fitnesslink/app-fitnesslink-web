@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "@/lib/state/auth";
 import { notifications as notifApi } from "@/lib/api/notifications";
+import { users as usersApi } from "@/lib/api/core";
 import { Avatar } from "@/components/ui/Avatar";
 import { Popover } from "@/components/ui/Popover";
 import { NotificationsSheet } from "@/components/profile/NotificationsSheet";
@@ -23,6 +24,28 @@ async function fetchUnreadCount(): Promise<number> {
   }
 }
 
+interface PlatformUser {
+  firstName?: string | null;
+  lastName?: string | null;
+  email?: string | null;
+  alias?: string | null;
+}
+
+async function fetchMyProfile(): Promise<PlatformUser | null> {
+  const raw = (await usersApi.getMyUser()) as
+    | PlatformUser
+    | { data?: PlatformUser }
+    | null
+    | undefined;
+  if (process.env.NODE_ENV === "development") {
+    // eslint-disable-next-line no-console
+    console.debug("[TopBar] /users/me response:", raw);
+  }
+  if (!raw) return null;
+  if ("data" in raw && raw.data && typeof raw.data === "object") return raw.data;
+  return raw as PlatformUser;
+}
+
 export function TopBar({ subtitle = "Have a nice day" }: TopBarProps) {
   const router = useRouter();
   const { user, logout } = useAuth();
@@ -34,13 +57,23 @@ export function TopBar({ subtitle = "Have a nice day" }: TopBarProps) {
     refetchInterval: 60_000,
   });
 
-  const name = user?.firstName ?? "there";
+  const { data: profile } = useQuery({
+    queryKey: [...usersApi.keys.all, "me"],
+    queryFn: fetchMyProfile,
+    enabled: !!user,
+    staleTime: 10 * 60 * 1000,
+  });
+
+  const firstName = profile?.firstName?.trim() || user?.firstName || "";
+  const lastName = profile?.lastName?.trim() || user?.lastName || "";
+  const fullName = `${firstName} ${lastName}`.trim();
+  const greetingName = firstName || "there";
 
   return (
     <header className="h-16 bg-surface border-b border-border-soft flex items-center justify-between px-6">
       <div className="min-w-0">
         <p className="text-base font-semibold text-text-primary truncate">
-          Hello, {name}
+          Hello, {greetingName}
         </p>
         <p className="text-xs text-text-secondary truncate">{subtitle}</p>
       </div>
@@ -70,7 +103,7 @@ export function TopBar({ subtitle = "Have a nice day" }: TopBarProps) {
               className="inline-flex items-center gap-2 p-1 rounded-full hover:bg-primary-soft transition-colors"
             >
               <Avatar
-                name={user ? `${user.firstName} ${user.lastName}`.trim() : undefined}
+                name={fullName || undefined}
                 size="md"
               />
               <svg className="w-4 h-4 text-text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -82,7 +115,7 @@ export function TopBar({ subtitle = "Have a nice day" }: TopBarProps) {
           <div className="p-2 min-w-[180px]">
             <div className="px-2 py-1.5 border-b border-border-soft mb-1">
               <p className="text-sm font-medium text-text-primary truncate">
-                {user ? `${user.firstName} ${user.lastName}`.trim() : "Signed out"}
+                {user ? fullName || "Signed in" : "Signed out"}
               </p>
               {user?.email && (
                 <p className="text-xs text-text-secondary truncate">{user.email}</p>

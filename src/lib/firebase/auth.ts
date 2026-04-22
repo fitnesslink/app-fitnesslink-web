@@ -17,7 +17,7 @@ export function firebaseUserToAppUser(fbUser: FirebaseUser): User {
   const lastName = rest.join(" ");
   return {
     id: fbUser.uid,
-    firstName: firstName || fbUser.email?.split("@")[0] || "",
+    firstName,
     lastName,
     email: fbUser.email ?? "",
   };

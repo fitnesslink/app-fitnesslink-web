@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "@/lib/state/auth";
 import { movements } from "@/lib/api/core";
+import { useResolvedMedia } from "@/hooks/useResolvedMedia";
 import { AppShell } from "@/components/layout/AppShell";
 import { CatalogHeader } from "@/components/catalog/CatalogHeader";
 import { MovementPreviewSheet } from "@/components/catalog/MovementPreviewSheet";
@@ -59,7 +60,17 @@ export default function ExercisesBrowserPage() {
     queryFn: fetchMovements,
   });
 
-  const items = data ?? [];
+  const rawItems = useMemo(() => data ?? [], [data]);
+  const imageIds = useMemo(() => rawItems.map((m) => m.imageId), [rawItems]);
+  const imageMap = useResolvedMedia(imageIds, "movementimage");
+  const items = useMemo<MovementSummary[]>(
+    () =>
+      rawItems.map((m) => ({
+        ...m,
+        thumbnailUrl: m.thumbnailUrl ?? (m.imageId ? imageMap.get(m.imageId) : undefined),
+      })),
+    [rawItems, imageMap]
+  );
   const categories = useMemo(() => uniqueValues(items, "category"), [items]);
   const muscles = useMemo(() => uniqueValues(items, "muscleGroup"), [items]);
   const equipment = useMemo(() => uniqueValues(items, "equipment"), [items]);
@@ -132,26 +143,7 @@ export default function ExercisesBrowserPage() {
               <>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                   {paged.map((m) => (
-                    <button
-                      key={m.id}
-                      type="button"
-                      onClick={() => setPreviewId(m.id)}
-                      className="text-left"
-                    >
-                      <Card density="compact" className="h-full hover:border-primary transition-colors">
-                        <div className="aspect-square rounded-lg bg-primary-soft text-primary flex items-center justify-center mb-2">
-                          <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <polygon points="5 3 19 12 5 21 5 3" />
-                          </svg>
-                        </div>
-                        <p className="text-sm font-medium text-text-primary truncate">{m.name}</p>
-                        {m.muscleGroup && (
-                          <p className="text-xs text-text-secondary mt-0.5 truncate">
-                            {m.muscleGroup}
-                          </p>
-                        )}
-                      </Card>
-                    </button>
+                    <MovementTile key={m.id} movement={m} onClick={() => setPreviewId(m.id)} />
                   ))}
                 </div>
                 <Paginator
@@ -168,6 +160,43 @@ export default function ExercisesBrowserPage() {
 
       <MovementPreviewSheet movementId={previewId} onClose={() => setPreviewId(null)} />
     </AppShell>
+  );
+}
+
+function MovementTile({
+  movement,
+  onClick,
+}: {
+  movement: MovementSummary;
+  onClick: () => void;
+}) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const imageUrl = !imageFailed ? movement.thumbnailUrl ?? null : null;
+  return (
+    <button type="button" onClick={onClick} className="text-left">
+      <Card density="compact" className="h-full hover:border-primary transition-colors">
+        <div className="aspect-square rounded-lg bg-primary-soft text-primary flex items-center justify-center mb-2 overflow-hidden">
+          {imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={imageUrl}
+              alt=""
+              className="w-full h-full object-cover"
+              loading="lazy"
+              onError={() => setImageFailed(true)}
+            />
+          ) : (
+            <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+          )}
+        </div>
+        <p className="text-sm font-medium text-text-primary truncate">{movement.name}</p>
+        {movement.muscleGroup && (
+          <p className="text-xs text-text-secondary mt-0.5 truncate">{movement.muscleGroup}</p>
+        )}
+      </Card>
+    </button>
   );
 }
 

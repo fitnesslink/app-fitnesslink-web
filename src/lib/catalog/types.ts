@@ -13,6 +13,7 @@ export interface WorkoutSummary {
   exerciseCount: number;
   trainingLevel?: TrainingLevel;
   thumbnailUrl?: string;
+  imageId?: string;
   contributor?: string;
 }
 
@@ -44,6 +45,7 @@ export interface ProgramSummary {
   weeks: number;
   trainingLevel?: TrainingLevel;
   thumbnailUrl?: string;
+  imageId?: string;
 }
 
 export interface ProgramDetail extends ProgramSummary {
@@ -65,6 +67,7 @@ export interface MovementSummary {
   muscleGroup?: string;
   equipment?: string;
   thumbnailUrl?: string;
+  imageId?: string;
 }
 
 export interface MovementDetail extends MovementSummary {

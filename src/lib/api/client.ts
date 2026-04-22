@@ -117,5 +117,8 @@ export async function platformJson<T>(
   init?: RequestInit
 ): Promise<T> {
   const res = await platformFetch(path, init);
-  return res.json() as Promise<T>;
+  if (res.status === 204) return undefined as T;
+  const text = await res.text();
+  if (!text) return undefined as T;
+  return JSON.parse(text) as T;
 }

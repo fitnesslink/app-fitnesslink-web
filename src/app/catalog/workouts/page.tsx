@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "@/lib/state/auth";
 import { workouts } from "@/lib/api/core";
+import { useResolvedMedia } from "@/hooks/useResolvedMedia";
 import { AppShell } from "@/components/layout/AppShell";
 import { CatalogHeader } from "@/components/catalog/CatalogHeader";
 import { WorkoutCard } from "@/components/catalog/WorkoutCard";
@@ -13,7 +14,7 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { WorkoutsEmpty } from "@/components/ui/empty-states";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
-import type { WorkoutSummary } from "@/lib/catalog/types";
+import type { TrainingLevel, WorkoutSummary } from "@/lib/catalog/types";
 
 const PAGE_SIZE = 12;
 
@@ -24,12 +25,40 @@ const SORT_OPTIONS = [
   { value: "duration-desc", label: "Longest first" },
 ];
 
+interface RawWorkout {
+  id?: string;
+  name?: string | null;
+  description?: string | null;
+  estimatedTime?: number | null;
+  trainingLevel?: string | null;
+  imageId?: string | null;
+  thumbnailId?: string | null;
+  phases?: Array<{ taskRows?: Array<unknown> | null } | null> | null;
+}
+
+function toWorkoutSummary(w: RawWorkout): WorkoutSummary {
+  const exerciseCount = (w.phases ?? []).reduce(
+    (sum, p) => sum + (p?.taskRows?.length ?? 0),
+    0
+  );
+  return {
+    id: w.id ?? "",
+    name: w.name ?? "",
+    description: w.description ?? undefined,
+    estimatedMinutes: w.estimatedTime ?? 0,
+    exerciseCount,
+    trainingLevel: (w.trainingLevel as TrainingLevel | null) ?? undefined,
+    imageId: w.imageId ?? w.thumbnailId ?? undefined,
+  };
+}
+
 async function fetchWorkouts(): Promise<WorkoutSummary[]> {
   try {
     const res = (await workouts.listWorkouts()) as
-      | { data?: WorkoutSummary[]; items?: WorkoutSummary[] }
-      | WorkoutSummary[];
-    return Array.isArray(res) ? res : res.data ?? res.items ?? [];
+      | { data?: RawWorkout[]; items?: RawWorkout[] }
+      | RawWorkout[];
+    const raw = Array.isArray(res) ? res : res.data ?? res.items ?? [];
+    return raw.map(toWorkoutSummary);
   } catch {
     return [];
   }
@@ -51,8 +80,20 @@ export default function WorkoutsListPage() {
     queryFn: fetchWorkouts,
   });
 
+  const imageIds = useMemo(() => (data ?? []).map((w) => w.imageId), [data]);
+  const imageMap = useResolvedMedia(imageIds, "workoutimage");
+
+  const withThumbs = useMemo<WorkoutSummary[]>(
+    () =>
+      (data ?? []).map((w) => ({
+        ...w,
+        thumbnailUrl: w.thumbnailUrl ?? (w.imageId ? imageMap.get(w.imageId) : undefined),
+      })),
+    [data, imageMap]
+  );
+
   const visible = useMemo(() => {
-    let items = data ?? [];
+    let items = withThumbs;
     if (search) {
       const q = search.toLowerCase();
       items = items.filter(
@@ -75,7 +116,7 @@ export default function WorkoutsListPage() {
       return 0;
     });
     return copy;
-  }, [data, search, sort]);
+  }, [withThumbs, search, sort]);
 
   const paged = visible.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 

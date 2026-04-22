@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import type { WorkoutDetail } from "@/lib/catalog/types";
+import { formatDuration } from "@/lib/format";
 
 interface WorkoutDetailViewProps {
   workout: WorkoutDetail;
@@ -20,16 +22,28 @@ export function WorkoutDetailView({
   actions,
 }: WorkoutDetailViewProps) {
   const totalExercises = workout.phases.reduce((s, p) => s + p.exercises.length, 0);
+  const [imageFailed, setImageFailed] = useState(false);
+  const imageUrl = !imageFailed ? workout.thumbnailUrl ?? null : null;
 
   return (
     <div className="space-y-6">
       <Card>
         <CardContent>
           <div className="flex flex-col lg:flex-row gap-6">
-            <div className="aspect-[4/3] lg:w-64 shrink-0 rounded-xl bg-primary-soft text-primary flex items-center justify-center">
-              <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M4 10h16M8 6v12M16 6v12" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+            <div className="aspect-[4/3] lg:w-64 shrink-0 rounded-xl bg-primary-soft text-primary flex items-center justify-center overflow-hidden">
+              {imageUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={imageUrl}
+                  alt=""
+                  className="w-full h-full object-cover"
+                  onError={() => setImageFailed(true)}
+                />
+              ) : (
+                <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M4 10h16M8 6v12M16 6v12" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
             </div>
             <div className="min-w-0 flex-1">
               <h1 className="text-2xl lg:text-3xl font-bold text-text-primary break-words">
@@ -39,7 +53,7 @@ export function WorkoutDetailView({
                 <p className="text-sm text-text-secondary mt-2">{workout.description}</p>
               )}
               <div className="flex flex-wrap gap-2 mt-3 text-xs text-text-secondary">
-                <Badge tone="default">{workout.estimatedMinutes} min</Badge>
+                <Badge tone="default">{formatDuration(workout.estimatedMinutes)}</Badge>
                 <Badge tone="default">{totalExercises} exercises</Badge>
                 {workout.trainingLevel && (
                   <Badge tone={workout.trainingLevel === "advanced" ? "warning" : "primary"}>
