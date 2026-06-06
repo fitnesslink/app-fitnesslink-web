@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.github
+.env*.local
+npm-debug.log*
+*.tsbuildinfo
+.DS_Store
+.vercel
+coverage
+PLAN*.md
+README.md

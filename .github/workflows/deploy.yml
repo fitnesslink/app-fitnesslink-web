@@ -1,0 +1,58 @@
+name: Deploy
+
+# Builds the image in ACR and rolls the Container App to it.
+# Terraform owns the app and ignores image changes, so this update causes no
+# drift. Requires an Entra app with federated (OIDC) credentials that has
+# AcrPush on the registry and Contributor on the container app.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  ACR_NAME: fitnesslinkrcgprod
+  IMAGE: fitnesslink-web
+  RESOURCE_GROUP: fitnesslink-rg
+  CONTAINER_APP: fitnesslink-prod-web
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      # NEXT_PUBLIC_* values are inlined at build time, so they are passed as
+      # build args here (not as Container App runtime env).
+      - name: Build image in ACR
+        run: |
+          az acr build \
+            --registry "$ACR_NAME" \
+            --image "$IMAGE:${{ github.sha }}" \
+            --image "$IMAGE:latest" \
+            --build-arg NEXT_PUBLIC_API_BASE_URL="${{ secrets.NEXT_PUBLIC_API_BASE_URL }}" \
+            --build-arg NEXT_PUBLIC_FIREBASE_API_KEY="${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}" \
+            --build-arg NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}" \
+            --build-arg NEXT_PUBLIC_FIREBASE_PROJECT_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}" \
+            --build-arg NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="${{ secrets.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET }}" \
+            --build-arg NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}" \
+            --build-arg NEXT_PUBLIC_FIREBASE_APP_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}" \
+            --build-arg NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID }}" \
+            .
+
+      - name: Roll Container App to the new image
+        run: |
+          az containerapp update \
+            --name "$CONTAINER_APP" \
+            --resource-group "$RESOURCE_GROUP" \
+            --image "$ACR_NAME.azurecr.io/$IMAGE:${{ github.sha }}"
